@@ -26,11 +26,9 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.br.loja.entity.Usuario;
-import com.mysql.jdbc.log.Log;
 
 public abstract class BasicBBean implements BeanNameAware, Serializable {
 

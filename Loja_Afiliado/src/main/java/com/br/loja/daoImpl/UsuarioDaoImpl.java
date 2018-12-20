@@ -31,14 +31,18 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
+	@Transactional
 	public Usuario buscarPorLoginESenha(String login, String senha) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional
 	public Usuario inicializarPerfisDoUsuario(Usuario usuario) {
-		//usuarioRepository.initialize(usuario.getPerfisDoUsuario());
+		
+	//	usuarioRepository.initialize(usuario);
+		
 		return usuario;
 	}
 	
@@ -49,4 +53,10 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		return usuarioRepository.findOne(idUsuario);
 	}
 
+	@Override
+	@Transactional
+	public Usuario emailExiste(String email) {
+		
+		return usuarioRepository.loginUsuario(email);
+	}
 }

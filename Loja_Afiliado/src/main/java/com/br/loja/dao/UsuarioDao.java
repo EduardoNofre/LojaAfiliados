@@ -13,4 +13,6 @@ public interface UsuarioDao {
 	public Usuario inicializarPerfisDoUsuario(Usuario usuario);
 	
 	public Usuario buscaUsuarioId(int idUsuario);
+	
+	public Usuario emailExiste(String email);
 }

@@ -3,7 +3,7 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
     
-    <name>primefaces_ultima</name>
+    <name>Vendas</name>
     
     <component>
         <component-type>org.primefaces.component.UltimaMenu</component-type>
@@ -18,10 +18,25 @@
         </renderer>
     </render-kit>
  
-    <application>
+    <application>    
+        <resource-bundle>
+            <base-name>com.tcibpo.content.app.message.Messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        
         <el-resolver>
                 org.springframework.web.jsf.el.SpringBeanFacesELResolver
         </el-resolver>
+        
     </application>
+    
+    	
+    	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>branca</from-outcome>
+			<to-view-id>/dashboard.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+	</navigation-rule>
     
 </faces-config>

@@ -24,6 +24,8 @@ public class Constantes {
 
 	public static final String PARAM_APPLICATION_CONTEXT = "PARAM_APPLICATION_CONTEXT";
 	public static final String PARAM_APPLICATION_PROPERTIES = "PARAM_APPLICATION_PROPERTIES";
+	
+	public static final String EFETUOU_LOGIN = "Efetuou login no sistema";
 
 	
 	// Constantes guardando modulo

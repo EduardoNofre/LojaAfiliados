@@ -103,7 +103,7 @@ public class Usuario implements Serializable {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-
+	
 	public List<Produto> getProdutos() {
 		return this.produtos;
 	}

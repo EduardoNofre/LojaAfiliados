@@ -20,5 +20,7 @@ public interface UsuarioService {
 	public Usuario buscarPorLogin(String login) throws Exception;
 	
 	public Usuario inicializarPerfisDoUsuario(Usuario usuario);
+	
+	public Usuario emailExiste(String email)  throws Exception;
 
 }

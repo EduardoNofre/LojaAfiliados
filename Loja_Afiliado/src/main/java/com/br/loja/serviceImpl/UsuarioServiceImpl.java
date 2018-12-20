@@ -4,16 +4,18 @@ import javax.security.auth.login.LoginException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.br.loja.dao.UsuarioDao;
 import com.br.loja.entity.Usuario;
 import com.br.loja.service.UsuarioService;
+import com.br.loja.util.BasicBBean;
+import com.br.loja.util.Constantes;
 import com.br.loja.util.StringUtil;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 
+	private static final long serialVersionUID = 1L;
 	private static final String AVIS0_LOGIN_SENHA_NAO_PREENCHIDO = "Usuário / Senha inválida";
 	private static final String AVIS0_LOGIN_NAO_ENCONTRADO = "Usuário não encontrado";
 	private static final String AVIS0_USUARIO_INATIVO = "Usuário esta inativo";
@@ -32,9 +34,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 
 		try {
-			
+
 			usuario = this.buscarPorLogin(usuario.getEmail());
-			
+
 		} catch (Exception e) {
 			throw new LoginException(e.getMessage());
 		}
@@ -49,13 +51,27 @@ public class UsuarioServiceImpl implements UsuarioService {
 			throw new LoginException(AVIS0_USUARIO_INATIVO);
 		}
 
+		// usuario = service.inicializarPerfisDoUsuario(usuario);
+
+		criaColocaUsuarioSessao(usuario);
+
 		return usuario;
+	}
+
+	private void criaColocaUsuarioSessao(Usuario usuario) {
+
+		/**
+		 * coloca usuario na sessão
+		 */
+
+		getHttpSession(true).setAttribute(Constantes.USUARIO_DA_SESSAO, usuario);
+
 	}
 
 	@Override
 	public Usuario inicializarPerfisDoUsuario(Usuario usuario) {
-		usuario = usuarioDao.buscaUsuarioId(usuario.getIdUsuario());
-		return usuarioDao.inicializarPerfisDoUsuario(usuario);
+		return usuario = usuarioDao.buscaUsuarioId(usuario.getIdUsuario());
+		//return usuarioDao.inicializarPerfisDoUsuario(usuario);
 	}
 
 	private boolean validaUsuarioESenha(Usuario usuario) {
@@ -70,5 +86,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario buscarPorLogin(String login) throws Exception {
 		return usuarioDao.buscarPorLogin(login);
+	}
+
+	@Override
+	public Usuario emailExiste(String email) throws Exception {
+
+		return usuarioDao.buscarPorLogin(email);
 	}
 }
