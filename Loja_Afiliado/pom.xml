@@ -233,11 +233,11 @@
 
 		<!-- PRIMEFACES 6.2 -->
 
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>6.2</version>
-		</dependency>
+<dependency>
+	<groupId>org.primefaces</groupId>
+	<artifactId>primefaces</artifactId>
+	<version>6.2</version>
+</dependency>
 
 		<dependency>
 			<groupId>org.primefaces.extensions</groupId>

@@ -1,16 +1,50 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
 
-	<ui:define name="title">Vendas</ui:define>
+    <ui:define name="title">Misc</ui:define>
 
-	<ui:define name="content">
-		<h:form>
-			<p:galleria value="#{imagesView.images}" var="image" showCaption="true" panelWidth="280">
-				<p:graphicImage name="demo/images/nature/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+    <ui:define name="content">
+        <script type="text/javascript">
+            function start() {
+                PF('startButton1').disable();
+
+                window['progress'] = setInterval(function () {
+                    var pbClient = PF('pbClient'),
+                            oldValue = pbClient.getValue(),
+                            newValue = oldValue + 10;
+
+                    pbClient.setValue(pbClient.getValue() + 10);
+
+                    if (newValue === 100) {
+                        clearInterval(window['progress']);
+                    }
+
+
+                }, 1000);
+            }
+
+            function cancel() {
+                clearInterval(window['progress']);
+                PF('pbClient').setValue(0);
+                PF('startButton1').enable();
+            }
+
+        </script>        
+        <h:form>
+
+			<p:contentFlow value="#{imagesView.images}" var="image" >
+				<p:graphicImage value="#{image}" cache="false" stream="false" title="#{image}" alt="Image Description for #{image}" styleClass="content"  />
+			</p:contentFlow>
+			
+			<p:galleria value="#{imagesView.images}" var="image" >				    
+				    <p:graphicImage value="#{image}" cache="false" stream="false" title="#{image}" alt="Image Description for #{image}" styleClass="content"  />
 			</p:galleria>
-		</h:form>
-	</ui:define>
+			
+		</h:form>    
+    </ui:define>
+
 </ui:composition>

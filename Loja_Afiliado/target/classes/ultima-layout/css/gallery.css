@@ -1,0 +1,33 @@
+<style>
+
+.ui-grid-col {
+	padding: 0.2%;
+}
+
+.ui-panel .ui-panel-content {
+	border: 0;
+	background: none;
+	padding: 0px;
+}
+
+.panelPDFPanel a {
+	display: none;
+}
+
+.panelPDFPanel span {
+	display: none;
+}
+
+.ui-panelgrid-cell .prop {
+	font-weight: bold;
+}
+
+.registro button {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.ui-galleria-panel {
+	width: 100% !important;;
+}
+</style>
