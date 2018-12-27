@@ -25,8 +25,8 @@
     <h:body styleClass="main-body #{guestPreferences.compact ? 'layout-compact' : null}">
         
         <div class="layout-wrapper #{guestPreferences.menuLayout} #{guestPreferences.orientationRTL ? 'layout-rtl' : null}">
-            <ui:include src="./topbar.xhtml" />
-            <ui:include src="./menu.xhtml" />
+            <ui:include src="./topbarPrincipal.xhtml" />
+<!--             <ui:include src="./menu.xhtml" /> -->
             
             <div class="layout-main">
                 <ui:insert name="content"/>
