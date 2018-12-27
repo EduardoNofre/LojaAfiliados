@@ -8,39 +8,64 @@
 
 	<ui:define name="content">
 		<script type="text/javascript">
-            function start() {
-                PF('startButton1').disable();
+			function start() {
+				PF('startButton1').disable();
 
-                window['progress'] = setInterval(function () {
-                    var pbClient = PF('pbClient'),
-                            oldValue = pbClient.getValue(),
-                            newValue = oldValue + 10;
+				window['progress'] = setInterval(function() {
+					var pbClient = PF('pbClient'), oldValue = pbClient
+							.getValue(), newValue = oldValue + 10;
 
-                    pbClient.setValue(pbClient.getValue() + 10);
+					pbClient.setValue(pbClient.getValue() + 10);
 
-                    if (newValue === 100) {
-                        clearInterval(window['progress']);
-                    }
+					if (newValue === 100) {
+						clearInterval(window['progress']);
+					}
 
+				}, 1000);
+			}
 
-                }, 1000);
-            }
-
-            function cancel() {
-                clearInterval(window['progress']);
-                PF('pbClient').setValue(0);
-                PF('startButton1').enable();
-            }
-
-        </script>
+			function cancel() {
+				clearInterval(window['progress']);
+				PF('pbClient').setValue(0);
+				PF('startButton1').enable();
+			}
+		</script>
 
 
 		<h:form id="principal">
 			<div class="footer">
-				<p:galleria value="#{imagesView.imagesPrincipalProdutos}" var="imagesPrincipalProdutos" panelWidth="1625" panelHeight="313"
-					showCaption="true" showOverlays="true">
-					<p:graphicImage id="imagem" value="#{imagesPrincipalProdutos}" cache="disable" stream="false" title="#{imagesPrincipalProdutos}" alt="Image Description for #{imagesPrincipalProdutos}" />
-				</p:galleria>
+				<div class="ui-fluid">
+					<p:galleria value="#{imagesView.imagesGaleriaProdutos}"
+						var="imagesPrincipalProdutos" panelWidth="1625" panelHeight="313"
+						showCaption="true" showOverlays="true">
+						<p:graphicImage id="imagem" value="#{imagesPrincipalProdutos}" cache="disable" stream="false" title="#{imagesPrincipalProdutos}"
+							alt="Image Description for #{imagesPrincipalProdutos}" />
+					</p:galleria>
+
+
+					<p:dataGrid var="gridImagem"
+						value="#{imagesView.imagesDataGridProdutos}" columns="3"
+						layout="grid" rows="12" id="grid"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="3" reflow="true">
+
+						<p:panel header="#{gridImagem}" style="text-align:center">
+							<h:panelGrid columns="1" style="width:100%">
+								<p:graphicImage value="#{gridImagem}" cache="disable" stream="false" />
+
+								<h:outputText value="#{car.year}" />
+
+								<p:commandLink update=":principal"
+									oncomplete="PF('carDialog').show()" title="View Detail">
+									<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />
+									<f:setPropertyActionListener value="#{car}"
+										target="#{dataGridView.selectedCar}" />
+								</p:commandLink>
+							</h:panelGrid>
+						</p:panel>
+
+					</p:dataGrid>
+				</div>
 			</div>
 		</h:form>
 	</ui:define>

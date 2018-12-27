@@ -23,17 +23,33 @@ import com.br.loja.util.Util;
 @SessionScoped
 public class ImagesView {
 
-	private List<StreamedContent> imagesPrincipalProdutos = null;
+	private List<StreamedContent> imagesGaleriaProdutos = null;
+	
+	private List<StreamedContent> imagesDataGridProdutos = null;
 
-	public List<StreamedContent> getImagesPrincipalProdutos() {
+	public List<StreamedContent> getImagesGaleriaProdutos() {
 		
-		imagesPrincipalProdutos = Util.loadImagemGalleria();
+		imagesGaleriaProdutos = Util.loadImagemGalleria();
 
-		return imagesPrincipalProdutos;
+		return imagesGaleriaProdutos;
 	}
 
-	public void setImagesPrincipalProdutos(List<StreamedContent> imagesPrincipalProdutos) {
-		this.imagesPrincipalProdutos = imagesPrincipalProdutos;
+	public void setImagesGaleriaProdutos(List<StreamedContent> imagesGaleriaProdutos) {
+		
+		this.imagesGaleriaProdutos = imagesGaleriaProdutos;
 	}
+
+	public List<StreamedContent> getImagesDataGridProdutos() {
+		
+		imagesDataGridProdutos = Util.loadImagemGalleria();
+		
+		return imagesDataGridProdutos;
+	}
+
+	public void setImagesDataGridProdutos(List<StreamedContent> imagesDataGridProdutos) {
+		this.imagesDataGridProdutos = imagesDataGridProdutos;
+	}
+	
+	
 
 }

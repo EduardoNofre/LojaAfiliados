@@ -82,12 +82,15 @@ public class Util {
 		File f = new File("C:\\img_TIFF\\");
 
 		for (File file : f.listFiles()) {
+			
+			if(!file.getName().endsWith(".db")){
 
 			outFile = Util.getBytes(file);
 
 			InputStream is = new ByteArrayInputStream(outFile.toByteArray());
 
 			imagesPrincipalProdutos.add(new DefaultStreamedContent(is));
+			}
 		}
 
 		return imagesPrincipalProdutos;
