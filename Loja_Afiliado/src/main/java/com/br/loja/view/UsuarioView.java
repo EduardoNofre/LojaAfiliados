@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import com.br.loja.entity.Usuario;
 import com.br.loja.service.UsuarioService;
 import com.br.loja.util.BasicBBean;
+import com.br.loja.util.Constantes;
 import com.br.loja.util.UsuarioLogado;
 
 @Controller
@@ -22,7 +23,10 @@ import com.br.loja.util.UsuarioLogado;
 @ViewScoped
 public class UsuarioView extends BasicBBean implements Serializable {
 
-	private static String PAGINA_SUCESSO_LOGIN = "branca";
+
+	private static final long serialVersionUID = 1L;
+	
+	private static String PAGINA_SUCESSO_LOGIN = "login";
 	private static final String PAGINA_ERRO_LOGIN = "login";
 
 	@Autowired
@@ -58,7 +62,7 @@ public class UsuarioView extends BasicBBean implements Serializable {
 
 			//criaUsuarioUtilitario();
 
-			return PAGINA_SUCESSO_LOGIN;
+			return Constantes.PAGINA_SUCESSO_GALERIA;
 
 		} catch (LoginException e) {
 

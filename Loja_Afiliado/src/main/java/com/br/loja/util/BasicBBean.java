@@ -1,9 +1,5 @@
 package com.br.loja.util;
 
-import static com.br.loja.util.Constantes.CADASTROS;
-import static com.br.loja.util.Constantes.MONITOR_DE_PROCESSO;
-import static com.br.loja.util.Constantes.RELATORIOS;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -246,32 +242,7 @@ public abstract class BasicBBean implements BeanNameAware, Serializable {
 		}
 	}
 
-	public String getApplicationName() {
-
-		if (!loaded) {
-			load();
-		}
-
-		return properties.getProperty(Constantes.APLICATION_NAME);
-	}
-
-	public String getApplicationVersion() {
-
-		if (!loaded) {
-			load();
-		}
-
-		return properties.getProperty(Constantes.APLICATION_VERSION);
-	}
-
-	public String getApplicationTitle() {
-
-		if (!loaded) {
-			load();
-		}
-
-		return properties.getProperty(Constantes.APLICATION_TITLE);
-	}
+	
 
 	public UsuarioLogado getUsuarioLogado() {
 
@@ -352,14 +323,6 @@ public abstract class BasicBBean implements BeanNameAware, Serializable {
 //		return false;
 //	}
 
-	/**
-	 * 
-	 * @param s
-	 * @return
-	 */
-	public boolean temPermissoes(String s) {
-		return s != null && (MONITOR_DE_PROCESSO.equals(s) || RELATORIOS.equals(s) || CADASTROS.equals(s));
-	}
 
 	@SuppressWarnings("unchecked")
 	protected Map<String, HttpSession> getSessoesUsuariosLogados(){

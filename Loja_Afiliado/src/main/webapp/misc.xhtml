@@ -1,14 +1,13 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
 
-    <ui:define name="title">Misc</ui:define>
+	<ui:define name="title">Misc</ui:define>
 
-    <ui:define name="content">
-        <script type="text/javascript">
+	<ui:define name="content">
+		<script type="text/javascript">
             function start() {
                 PF('startButton1').disable();
 
@@ -33,18 +32,17 @@
                 PF('startButton1').enable();
             }
 
-        </script>        
-        <h:form>
+        </script>
 
-			<p:contentFlow value="#{imagesView.images}" var="image" >
-				<p:graphicImage value="#{image}" cache="false" stream="false" title="#{image}" alt="Image Description for #{image}" styleClass="content"  />
-			</p:contentFlow>
-			
-			<p:galleria value="#{imagesView.images}" var="image" >				    
-				    <p:graphicImage value="#{image}" cache="false" stream="false" title="#{image}" alt="Image Description for #{image}" styleClass="content"  />
-			</p:galleria>
-			
-		</h:form>    
-    </ui:define>
+
+		<h:form id="principal">
+			<div class="footer">
+				<p:galleria value="#{imagesView.imagesPrincipalProdutos}" var="imagesPrincipalProdutos" panelWidth="1625" panelHeight="313"
+					showCaption="true" showOverlays="true">
+					<p:graphicImage id="imagem" value="#{imagesPrincipalProdutos}" cache="disable" stream="false" title="#{imagesPrincipalProdutos}" alt="Image Description for #{imagesPrincipalProdutos}" />
+				</p:galleria>
+			</div>
+		</h:form>
+	</ui:define>
 
 </ui:composition>
