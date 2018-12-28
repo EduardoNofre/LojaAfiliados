@@ -38,9 +38,11 @@
 .clearfix:after {
   content: " ";
   display: block;
-  clear: both; }
+  clear: both;
+   }
 
 .card {
+
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
@@ -49,7 +51,7 @@
   border-radius: 2px;
   background: #ffffff;
   padding: 16px;
-  margin-bottom: 16px;
+/*   margin-bottom: 16px; */
   box-sizing: border-box; }
   .card.card-w-title {
     padding-bottom: 32px; }
@@ -67,8 +69,12 @@
     font-weight: 400; }
   .card h4 {
     font-size: 18px;
-    font-weight: 400; }
+    font-weight: 400; 
+    }
 
+.card fix {
+ position: fixed; 
+    }
 .nopad {
   padding: 0; }
   .nopad .ui-panel-content {
@@ -724,6 +730,10 @@ body {
   z-index: 999999997; }
 
 .layout-wrapper .topbar {
+	
+  padding: 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
   position: fixed;
   z-index: 100;
   width: 100%;
@@ -976,7 +986,7 @@ body {
     .layout-wrapper.menu-layout-overlay .topbar .topbar-right #menu-button i:before {
       content: ""; }
 .layout-wrapper .layout-main {
-  padding: 95px 15px 15px 15px;
+/*   padding: 95px 15px 15px 15px; */
   -moz-transition: margin-left 0.3s;
   -o-transition: margin-left 0.3s;
   -webkit-transition: margin-left 0.3s;
@@ -1214,9 +1224,11 @@ body {
   .layout-wrapper.menu-layout-static .layout-menu {
     margin-left: 0; }
   .layout-wrapper.menu-layout-static .layout-main {
-    margin-left: 250px; }
+    margin-left: 450px;
+	margin-right: 450px;}
   .layout-wrapper.menu-layout-static.layout-menu-static-inactive .layout-menu {
-    margin-left: -250px; }
+    margin-left: 450px;
+	margin-right: 450px; }
   .layout-wrapper.menu-layout-static.layout-menu-static-inactive .layout-main {
     margin-left: 0px; }
   .layout-wrapper.menu-layout-static .layout-mask {

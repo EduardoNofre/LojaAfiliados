@@ -2,9 +2,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/templatePrincipal.xhtml">
-
-	<ui:define name="title">Misc</ui:define>
+	xmlns:p="http://primefaces.org/ui" 
+	template="/WEB-INF/templatePrincipal.xhtml">
 
 	<ui:define name="content">
 		<script type="text/javascript">
@@ -34,12 +33,12 @@
 
 		<h:form id="principal">
 			<div class="footer">
+			
 				<div class="ui-fluid">
-					<p:galleria value="#{imagesView.imagesGaleriaProdutos}"
-						var="imagesPrincipalProdutos" panelWidth="1625" panelHeight="313"
-						showCaption="true" showOverlays="true">
-						<p:graphicImage id="imagem" value="#{imagesPrincipalProdutos}" cache="disable" stream="false" title="#{imagesPrincipalProdutos}"
-							alt="Image Description for #{imagesPrincipalProdutos}" />
+					<p:galleria value="#{imagesView.imagesGaleriaProdutos}" var="imagesPrincipalProdutos" panelWidth="985" panelHeight="313" showCaption="true" showOverlays="true">
+					
+					<p:graphicImage id="imagem" value="#{imagesPrincipalProdutos}" cache="disable" stream="false" title="#{imagesPrincipalProdutos}" alt="Image Description for #{imagesPrincipalProdutos}" />
+					
 					</p:galleria>
 
 

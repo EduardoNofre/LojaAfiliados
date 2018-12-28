@@ -22,16 +22,18 @@
         <ui:insert name="head"/>
     </h:head>
 
-    <h:body styleClass="main-body #{guestPreferences.compact ? 'layout-compact' : null}">
+    <h:body>
         
         <div class="layout-wrapper #{guestPreferences.menuLayout} #{guestPreferences.orientationRTL ? 'layout-rtl' : null}">
-            <ui:include src="./topbarPrincipal.xhtml" />
-<!--             <ui:include src="./menu.xhtml" /> -->
-            
+        
+<!--             <ui:include src="./topbarPrincipal.xhtml" /> -->
+                           
             <div class="layout-main">
+            <ui:include src="./footerPrincipal.xhtml" /> 
+
                 <ui:insert name="content"/>
                 
-                <ui:include src="./footer.xhtml" />
+           <ui:include src="./footerPrincipal.xhtml" />
             </div>
         </div>
         
