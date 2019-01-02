@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15329187974400" configfile="/Loja_Afiliado/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf15458567289110" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15458567289111 pf154585860291910" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="dashboard.xhtml?faces-redirect=true" x="338" y="178" id="pf15458567289112" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15458567289111" path="/dashboard.xhtml?faces-redirect=true"/>
-  <nodes xsi:type="pageflow:PFPage" name="misc.xhtml?faces-redirect=true" id="pf15458585753458" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf154585860291910" path="/misc.xhtml?faces-redirect=true"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf15458567289110" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15458567289111 pf15464681344752" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="dashboard.xhtml?faces-redirect=true" x="338" y="178" id="pf15458567289112" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15458567289111" path="/dashboard.xhtml?faces-redirect=true"/>
+  <nodes xsi:type="pageflow:PFPage" name="NewFile.html?faces-redirect=true" id="pf15464681344753" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15464681344752" path="/NewFile.html?faces-redirect=true"/>
   <links id="pf15458567289111" target="pf15458567289112" source="pf15458567289110" outcome="login"/>
-  <links id="pf154585860291910" target="pf15458585753458" source="pf15458567289110" outcome="principal"/>
+  <links id="pf15464681344752" target="pf15464681344753" source="pf15458567289110" outcome="principal"/>
 </pageflow:Pageflow>

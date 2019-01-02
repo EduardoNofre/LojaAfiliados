@@ -32,37 +32,34 @@
 
 
 		<h:form id="principal">
+						
 			<div class="footer">
+				
+			<div class="ui-fluid">
 			
-				<div class="ui-fluid">
-					<p:galleria value="#{imagesView.imagesGaleriaProdutos}" var="imagesPrincipalProdutos" panelWidth="985" panelHeight="313" showCaption="true" showOverlays="true">
+				<p:galleria value="#{imagesView.imagesGaleriaProdutos}" var="imagesPrincipalProdutos" panelWidth="985" panelHeight="313" showCaption="true" showOverlays="true" style="top:83px">
 					
 					<p:graphicImage id="imagem" value="#{imagesPrincipalProdutos}" cache="disable" stream="false" title="#{imagesPrincipalProdutos}" alt="Image Description for #{imagesPrincipalProdutos}" />
 					
-					</p:galleria>
-
-
+				</p:galleria>
+				
 					<p:dataGrid var="gridImagem"
 						value="#{imagesView.imagesDataGridProdutos}" columns="3"
 						layout="grid" rows="12" id="grid"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="3" reflow="true">
+						rowsPerPageTemplate="3" reflow="true"  style="margin-top:20px">
 
 						<p:panel header="#{gridImagem}" style="text-align:center">
 							<h:panelGrid columns="1" style="width:100%">
 								<p:graphicImage value="#{gridImagem}" cache="disable" stream="false" />
 
 								<h:outputText value="#{car.year}" />
-
-								<p:commandLink update=":principal"
-									oncomplete="PF('carDialog').show()" title="View Detail">
+								<p:commandLink update=":principal" oncomplete="PF('carDialog').show()" title="View Detail">
 									<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />
-									<f:setPropertyActionListener value="#{car}"
-										target="#{dataGridView.selectedCar}" />
+									<f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
 								</p:commandLink>
 							</h:panelGrid>
 						</p:panel>
-
 					</p:dataGrid>
 				</div>
 			</div>
