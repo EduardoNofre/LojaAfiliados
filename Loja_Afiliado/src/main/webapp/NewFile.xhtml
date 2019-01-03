@@ -4,45 +4,127 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+
+
+
 <h:head>
 
 </h:head>
 
+
+<style type="text/css">
+.ui-panel-images {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.ui-galleria-panel {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.ui-galleria {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+	margin: 0 auto;
+	width: 100% !important;
+
+}
+
+body .ui-widget-header {
+	background-color: #ffffff;
+	color: #ffffff;
+	font-size: 16px;
+	border: 1px solid #ffffff;
+}
+
+.ui-sticky {
+	top: -1px !important;
+}
+
+@media ( max-width : 0px) {
+	.ui-sticky {
+		top: -1px !important;
+	}
+}
+
+body .ui-toolbar {
+	background-color: #3F51B5;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0
+		rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0
+		rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0
+		rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+	padding: 30px;
+	top: 0px !important;
+}
+
+.div2 {
+  width: 60%;
+  height: 100%;  
+  padding: 50px;
+  margin: 0 auto;
+}
+
+.ui-galleria-caption {
+    position: absolute;
+    left: 1px;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    color: #fff;
+    padding: .2em 1em;
+    box-sizing: border-box;
+    width: 100% !important;
+}
+</style>
+
 <h:body>
-
 	<h:form id="principal">
-		<p:galleria value="#{imagesView.imagesGaleriaProdutos}"
-			var="imagesPrincipalProdutos" panelWidth="985" panelHeight="313"
-			showCaption="true" showOverlays="true" style="top:83px">
-			<p:graphicImage id="imagem" value="#{imagesPrincipalProdutos}"
-				cache="disable" stream="false" title="#{imagesPrincipalProdutos}"
-				alt="Image Description for #{imagesPrincipalProdutos}" />
-		</p:galleria>
+		<p:toolbar id="tb">
+		</p:toolbar>
+		<div style="height: 8px"></div>
+		<p:sticky target="tb" />
+<div class="div2">		
+		<p:panelGrid columns="1" layout="grid">
+			<f:facet name="header">
+				<p:galleria value="#{imagesView.imagesGaleriaProdutos}"
+					var="imagesPrincipalProdutos" 
+					showCaption="true"
+					showOverlays="true" 
+					>
 
-		<p:dataGrid var="gridImagem"
-			value="#{imagesView.imagesDataGridProdutos}" columns="3"
-			layout="grid" rows="12" id="grid"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="3" reflow="true">
+					<p:graphicImage id="imagem" 
+					value="#{imagesPrincipalProdutos}" 
+					cache="disable" 
+					stream="false" 
+					title="#{imagesPrincipalProdutos}" 
+					alt="Image Description for #{imagesPrincipalProdutos}" 
+					 style="width:100%"/>
+				</p:galleria>
 
-			<p:panel header="#{gridImagem}" style="text-align:center">
-				<h:panelGrid columns="1" style="width:100%">
-					<p:graphicImage value="#{gridImagem}" cache="disable"
-						stream="false" />
+				<p:dataGrid var="gridImagem"
+					value="#{imagesView.imagesDataGridProdutos}" columns="3"
+					layout="grid" rows="6" id="grid"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="3" reflow="true">
 
-					<h:outputText value="#{car.year}" />
-					<p:commandLink update=":principal"
-						oncomplete="PF('carDialog').show()" title="View Detail">
-						<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />
-						<f:setPropertyActionListener value="#{car}"
-							target="#{dataGridView.selectedCar}" />
-					</p:commandLink>
-				</h:panelGrid>
-			</p:panel>
-		</p:dataGrid>
+					<p:panel header="xxx" style="text-align:center">
+						<h:panelGrid columns="1" style="margin: auto">
+							<p:graphicImage value="#{gridImagem}" cache="disable" stream="false" style="width:100%" />
 
+							<h:outputText value="#{car.year}" />
+							<p:commandLink update="principal" oncomplete="PF('carDialog').show()" title="View Detail">
+								<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />
+								<f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" style="width:100%"/>
+							</p:commandLink>
+						</h:panelGrid>
+					</p:panel>
+				</p:dataGrid>
+			</f:facet>
+		</p:panelGrid>
+</div>
 	</h:form>
-
 </h:body>
-
 </html>
