@@ -8,41 +8,51 @@
 
 
 <h:head>
-
 </h:head>
 
-
 <style type="text/css">
-.ui-panel-images {
-	width: 100% !important;
-	height: 100% !important;
+
+.pictures_gallery{
+        width: 100% !important;
+        height: 10% !important;
 }
 
-.ui-galleria-panel {
-	width: 100% !important;
-	height: 100% !important;
+.ui-galleria-panel-wrapper{
+        width: 100% !important;
+        height: 50% !important;
 }
 
+.ui-galleria-panel{
+        width: 100% !important;
+        height: 10% !important;
+}
+.a_picture{
+        width: 100% !important;
+        height: 10% !important;
+}
 .ui-galleria {
 	overflow: hidden;
 	visibility: hidden;
 	position: relative;
 	margin: 0 auto;
 	width: 100% !important;
-
 }
-
 body .ui-widget-header {
 	background-color: #ffffff;
 	color: #ffffff;
 	font-size: 16px;
-	border: 1px solid #ffffff;
+	    border: 1px solid #ffffff;
 }
-
 .ui-sticky {
 	top: -1px !important;
 }
 
+.ui-grid {
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 15 ;
+}
 @media ( max-width : 0px) {
 	.ui-sticky {
 		top: -1px !important;
@@ -51,21 +61,17 @@ body .ui-widget-header {
 
 body .ui-toolbar {
 	background-color: #3F51B5;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0
-		rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0
-		rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0
-		rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 	padding: 30px;
 	top: 0px !important;
 }
 
-.div2 {
+.div-center-page {
   width: 60%;
-  height: 100%;  
   padding: 50px;
-  margin: 0 auto;
+  margin: -57 auto;
 }
 
 .ui-galleria-caption {
@@ -78,37 +84,37 @@ body .ui-toolbar {
     box-sizing: border-box;
     width: 100% !important;
 }
+
 </style>
 
+
 <h:body>
-	<h:form id="principal">
-		<p:toolbar id="tb">
+<h:form id="principal">
+<div class="div-center-page">	
+
+		<p:toolbar id="tbhead">
 		</p:toolbar>
 		<div style="height: 8px"></div>
-		<p:sticky target="tb" />
-<div class="div2">		
+		<p:sticky target="tbhead" />
+			
 		<p:panelGrid columns="1" layout="grid">
 			<f:facet name="header">
-				<p:galleria value="#{imagesView.imagesGaleriaProdutos}"
-					var="imagesPrincipalProdutos" 
-					showCaption="true"
-					showOverlays="true" 
-					>
+				<p:galleria effectSpeed="1" 
+				value="#{imagesView.imagesGaleriaProdutos}"
+				var="imagesPrincipalProdutos" 
+				showCaption="true"
+				showOverlays="true">
 
-					<p:graphicImage id="imagem" 
-					value="#{imagesPrincipalProdutos}" 
-					cache="disable" 
-					stream="false" 
-					title="#{imagesPrincipalProdutos}" 
-					alt="Image Description for #{imagesPrincipalProdutos}" 
-					 style="width:100%"/>
+				<p:graphicImage id="imagem" 
+				value="#{imagesPrincipalProdutos}" 
+				cache="disable" 
+				stream="false" 
+				title="#{imagesPrincipalProdutos}" 
+				alt="Image Description for #{imagesPrincipalProdutos}" 
+				style="width:100%; height:1000%;"/>
 				</p:galleria>
 
-				<p:dataGrid var="gridImagem"
-					value="#{imagesView.imagesDataGridProdutos}" columns="3"
-					layout="grid" rows="6" id="grid"
-					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="3" reflow="true">
+				<p:dataGrid var="gridImagem" value="#{imagesView.imagesDataGridProdutos}" columns="3" layout="grid" rows="6" id="grid" rowsPerPageTemplate="3" reflow="true">
 
 					<p:panel header="xxx" style="text-align:center">
 						<h:panelGrid columns="1" style="margin: auto">
@@ -123,8 +129,14 @@ body .ui-toolbar {
 					</p:panel>
 				</p:dataGrid>
 			</f:facet>
-		</p:panelGrid>
+		</p:panelGrid>	
+
+  		<p:toolbar id="tbfooter">
+		</p:toolbar>
+<div style="height: 8px"></div>
+		<p:sticky target="tbfooter" />
+
 </div>
-	</h:form>
+</h:form>
 </h:body>
 </html>
