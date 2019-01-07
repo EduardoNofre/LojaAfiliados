@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15329187974400" configfile="/Loja_Afiliado/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf15458567289110" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15458567289111 pf15464681344752" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="dashboard.xhtml?faces-redirect=true" x="338" y="178" id="pf15458567289112" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15458567289111" path="/dashboard.xhtml?faces-redirect=true"/>
-  <nodes xsi:type="pageflow:PFPage" name="NewFile.html?faces-redirect=true" id="pf15464681344753" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15464681344752" path="/NewFile.html?faces-redirect=true"/>
-  <links id="pf15458567289111" target="pf15458567289112" source="pf15458567289110" outcome="login"/>
-  <links id="pf15464681344752" target="pf15464681344753" source="pf15458567289110" outcome="principal"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf15458567289110" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15468936533648 pf154689369068010 pf154689415533513" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="principal.xhtml?faces-redirect=true" id="pf15468936533659" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf15468936533648" path="/principal.xhtml?faces-redirect=true"/>
+  <nodes xsi:type="pageflow:PFPage" name="administrador.xhtml?faces-redirect=true" id="pf154689369068011" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf154689369068010" path="/administrador.xhtml?faces-redirect=true"/>
+  <nodes xsi:type="pageflow:PFPage" name="dashboard.xhtml?faces-redirect=true" id="pf154689415533614" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf154689415533513" path="/dashboard.xhtml?faces-redirect=true"/>
+  <links id="pf15468936533648" target="pf15468936533659" source="pf15458567289110" outcome="principal"/>
+  <links id="pf154689369068010" target="pf154689369068011" source="pf15458567289110" outcome="administrador"/>
+  <links id="pf154689415533513" target="pf154689415533614" source="pf15458567289110" outcome="dashboard"/>
 </pageflow:Pageflow>

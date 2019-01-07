@@ -26,8 +26,7 @@ public class UsuarioView extends BasicBBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static String PAGINA_SUCESSO_LOGIN = "login";
-	private static final String PAGINA_ERRO_LOGIN = "login";
+	//private static String PAGINA_SUCESSO_LOGIN = "login";
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -62,14 +61,14 @@ public class UsuarioView extends BasicBBean implements Serializable {
 
 			//criaUsuarioUtilitario();
 
-			return Constantes.PAGINA_SUCESSO_GALERIA;
+			return Constantes.PAGINA_SUCESSO_CONFIG;
 
 		} catch (LoginException e) {
 
 			e.printStackTrace();
 		}
 
-		return PAGINA_ERRO_LOGIN;
+		return Constantes.PAGINA_ERRO_LOGIN;
 	}
 
 	private void criaUsuarioUtilitario() {

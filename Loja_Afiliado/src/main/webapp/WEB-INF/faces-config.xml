@@ -31,19 +31,27 @@
     </application>
     
     	
-    	<navigation-rule>
+    <navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>login</from-outcome>
-			<to-view-id>/dashboard.xhtml?faces-redirect=true</to-view-id>
+			<from-outcome>administrador</from-outcome>
+			<to-view-id>/administrador.xhtml?faces-redirect=true</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
-		<navigation-rule>
+	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>principal</from-outcome>
-			<to-view-id>/NewFile.html?faces-redirect=true</to-view-id>
+			<to-view-id>/principal.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>dashboard</from-outcome>
+			<to-view-id>/dashboard.xhtml?faces-redirect=true</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
