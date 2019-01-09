@@ -23,24 +23,25 @@
     </h:head>
 
 <style type="text/css">
+
 .example2 {
   border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px 10px #888888;
+  padding: 0px;
   background-color: #ffffff;
   width: 100%;
+  margin: 0 auto;
 }
+
 </style>
 
-    <h:body styleClass="main-body #{guestPreferences.compact ? 'layout-compact' : null}">
-        
+    <h:body styleClass="main-body #{guestPreferences.compact ? 'layout-compact' : null}">     
         <div class="layout-wrapper #{guestPreferences.menuLayout} #{guestPreferences.orientationRTL ? 'layout-rtl' : null}">
             <ui:include src="./topbar.xhtml" />
-            <ui:include src="./menu.xhtml" />
-            
+            <ui:include src="./menu.xhtml" />  
+           				          
             <div class="layout-main">
-                <ui:insert name="content"/>
-                
+            <ui:insert name="content"/>
+      
                 <ui:include src="./footer.xhtml" />
             </div>
         </div>
