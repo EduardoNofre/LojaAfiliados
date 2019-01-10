@@ -2,30 +2,53 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/templateUsuario.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templateUsuario.xhtml">
 
-<ui:define name="title"> Usuario Alterar </ui:define>
+	<ui:define name="title"> Usuario Alterar </ui:define>
 
-<ui:define name="content">
-<p:graphicImage name="images/dashboard/sales.svg" library="ultima-layout" style="width: 100%" />
+	<ui:define name="content">
+		<p:graphicImage name="images/dashboard/sales.svg"
+			library="ultima-layout" style="width: 100%" />
 
-            <div class="card">   	       
-                <h:form>
-                		
-                
-			  		<p>A div element with a shadow. The first value is the horizontal offset and the second value is the vertical offset. The shadow color will be inherited from the text color.</p>			                    	
-					<p>A div element with a shadow. The first value is the horizontal offset and the second value is the vertical offset. The shadow color will be inherited from the text color.</p>			                    	
-					<p>A div element with a shadow. The first value is the horizontal offset and the second value is the vertical offset. The shadow color will be inherited from the text color.</p>	
-				
-					<p:commandButton value="Cadastrar" id="ajax" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />	
-						                    	
-					
-				</h:form>   
-				</div>	
-				
-<div class="overview-footer">
-</div>
-</ui:define>
+		<div class="card">
+			<h:form>
+
+				<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="10">
+
+					<h:outputText value="Nome:" />
+					<p:inputText id="nome" />
+
+					<h:outputText value="Sobrenome:" />
+					<p:inputText id="snome" />
+
+					<h:outputText value="E-mail:" />
+					<p:inputText id="email" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="4" style="margin-bottom:0px" cellpadding="5">
+
+					<h:outputText  value="Senha:" />
+					<p:password id="Senha" value="#{passwordView.password3}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
+
+					<h:outputText value="Confirma Senha:" />
+					<p:password id="cSenha" value="#{passwordView.password3}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="10">
+
+					<h:outputText value="Foto Perfil:" />
+					<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" />
+
+				</h:panelGrid>
+
+			</h:form>
+			<center>
+				<p:commandButton value="Cadastrar" id="ajax" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+			</center>
+		</div>
+		<div class="overview-footer"></div>
+	</ui:define>
 
 
 </ui:composition>

@@ -75,7 +75,32 @@
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>usuarioAlterar</from-outcome>
-			<to-view-id>/dusuarioAlterar.xhtml</to-view-id>
+			<to-view-id>/usuarioAlterar.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+			<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>produtoExclusao</from-outcome>
+			<to-view-id>/produtoExclusao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>produtoCadastro</from-outcome>
+			<to-view-id>/produtoCadastro.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+		
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>produtoAlterar</from-outcome>
+			<to-view-id>/produtoAlterar.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
