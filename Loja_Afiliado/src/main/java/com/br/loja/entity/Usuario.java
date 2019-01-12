@@ -1,9 +1,17 @@
 package com.br.loja.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+import javax.transaction.Transactional;
 
 
 /**
@@ -16,44 +24,60 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idUsuario;
+	private Integer idUsuario;
+
+	private Timestamp dtregistro;
 
 	private String email;
 
-	private Timestamp lastacess;
+	private String foto;
 
-	private String lastName;
+	private String nome;
 
-	private String name;
+	private String senha;
 
-	private String password;
+	@Transient
+	private String confirmaSenha; 
+	
+	private Timestamp ultimoAcesso;
 
-	private Timestamp regdate;
+	private String ultimoNome;
+	
+	//bi-directional many-to-one association to Configview
+	@OneToMany(mappedBy="usuario")
+	private List<Configview> configviews;
 
 	//bi-directional many-to-one association to Produto
 	@OneToMany(mappedBy="usuario")
 	private List<Produto> produtos;
 
 	//bi-directional many-to-one association to Perfil
-	@OneToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="idperfil")
 	private Perfil perfil;
 
 	//bi-directional many-to-one association to Tipostatus
-	@OneToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="idstatus")
 	private Tipostatus tipostatus;
 
 	public Usuario() {
 	}
 
-	public int getIdUsuario() {
+	public Integer getIdUsuario() {
 		return this.idUsuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
+	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public Timestamp getDtregistro() {
+		return this.dtregistro;
+	}
+
+	public void setDtregistro(Timestamp dtregistro) {
+		this.dtregistro = dtregistro;
 	}
 
 	public String getEmail() {
@@ -64,46 +88,68 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public Timestamp getLastacess() {
-		return this.lastacess;
+	public String getFoto() {
+		return this.foto;
 	}
 
-	public void setLastacess(Timestamp lastacess) {
-		this.lastacess = lastacess;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
-	public String getLastName() {
-		return this.lastName;
+	public String getNome() {
+		return this.nome;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getName() {
-		return this.name;
+	public String getSenha() {
+		return this.senha;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public String getPassword() {
-		return this.password;
+	public Timestamp getUltimoAcesso() {
+		return this.ultimoAcesso;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUltimoAcesso(Timestamp ultimoAcesso) {
+		this.ultimoAcesso = ultimoAcesso;
 	}
 
-	public Timestamp getRegdate() {
-		return this.regdate;
+	public String getUltimoNome() {
+		return this.ultimoNome;
 	}
 
-	public void setRegdate(Timestamp regdate) {
-		this.regdate = regdate;
+	public void setUltimoNome(String ultimoNome) {
+		this.ultimoNome = ultimoNome;
 	}
-	
+
+	public List<Configview> getConfigviews() {
+		return this.configviews;
+	}
+
+	public void setConfigviews(List<Configview> configviews) {
+		this.configviews = configviews;
+	}
+
+	public Configview addConfigview(Configview configview) {
+		getConfigviews().add(configview);
+		configview.setUsuario(this);
+
+		return configview;
+	}
+
+	public Configview removeConfigview(Configview configview) {
+		getConfigviews().remove(configview);
+		configview.setUsuario(null);
+
+		return configview;
+	}
+
 	public List<Produto> getProdutos() {
 		return this.produtos;
 	}
@@ -142,4 +188,13 @@ public class Usuario implements Serializable {
 		this.tipostatus = tipostatus;
 	}
 
+	@Transactional
+	public String getConfirmaSenha() {
+		return confirmaSenha;
+	}
+
+	public void setConfirmaSenha(String confirmaSenha) {
+		this.confirmaSenha = confirmaSenha;
+	}
+	
 }

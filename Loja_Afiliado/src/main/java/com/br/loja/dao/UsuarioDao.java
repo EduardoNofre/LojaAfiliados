@@ -15,4 +15,6 @@ public interface UsuarioDao {
 	public Usuario buscaUsuarioId(int idUsuario);
 	
 	public Usuario emailExiste(String email);
+	
+	public Usuario cadastro(Usuario usuario);
 }

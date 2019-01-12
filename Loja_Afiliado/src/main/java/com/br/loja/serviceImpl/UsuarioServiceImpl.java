@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.br.loja.dao.UsuarioDao;
+import com.br.loja.entity.Perfil;
+import com.br.loja.entity.Produto;
+import com.br.loja.entity.Tipostatus;
 import com.br.loja.entity.Usuario;
 import com.br.loja.service.UsuarioService;
 import com.br.loja.util.BasicBBean;
@@ -24,9 +27,9 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	private UsuarioDao usuarioDao;
 
 	@Override
-	public Usuario autentica(Usuario usuario) throws LoginException {
+	public Usuario autenticaService(Usuario usuario) throws LoginException {
 
-		String senhaDigitada = usuario.getPassword();
+		String senhaDigitada = usuario.getSenha();
 
 		if (!this.validaUsuarioESenha(usuario)) {
 
@@ -35,7 +38,7 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 
 		try {
 
-			usuario = this.buscarPorLogin(usuario.getEmail());
+			usuario = this.buscarPorLoginService(usuario.getEmail());
 
 		} catch (Exception e) {
 			throw new LoginException(e.getMessage());
@@ -69,9 +72,9 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	}
 
 	@Override
-	public Usuario inicializarPerfisDoUsuario(Usuario usuario) {
+	public Usuario inicializarPerfisDoUsuarioService(Usuario usuario) {
 		return usuario = usuarioDao.buscaUsuarioId(usuario.getIdUsuario());
-		//return usuarioDao.inicializarPerfisDoUsuario(usuario);
+		// return usuarioDao.inicializarPerfisDoUsuario(usuario);
 	}
 
 	private boolean validaUsuarioESenha(Usuario usuario) {
@@ -79,18 +82,38 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	}
 
 	@Override
-	public Usuario buscarPorLoginESenha(String login, String senha) throws Exception {
+	public Usuario buscarPorLoginESenhaService(String login, String senha) throws Exception {
 		return usuarioDao.buscarPorLoginESenha(login, senha);
 	}
 
 	@Override
-	public Usuario buscarPorLogin(String login) throws Exception {
+	public Usuario buscarPorLoginService(String login) throws Exception {
 		return usuarioDao.buscarPorLogin(login);
 	}
 
 	@Override
-	public Usuario emailExiste(String email) throws Exception {
+	public Usuario emailExisteService(String email) throws Exception {
 
 		return usuarioDao.buscarPorLogin(email);
+	}
+
+	@Override
+	public Usuario cadastroService(Usuario usuario){
+		
+		Perfil perfil = new Perfil();
+		Tipostatus tipostatus = new Tipostatus();
+		
+		
+		perfil.setIdperfil(1);
+		
+		tipostatus.setIdstatus(1);
+		
+		Produto produto = new Produto();
+		
+		usuario.setPerfil(perfil);
+		
+		usuario.setTipostatus(tipostatus);
+		
+		return usuarioDao.cadastro(usuario);
 	}
 }

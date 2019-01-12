@@ -15,12 +15,15 @@ public class Tipostatus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idstatus;
+	private Integer idstatus;
 
 	private String dscStatus;
 
 	private String name;
+
+	//bi-directional many-to-one association to Configview
+	@OneToMany(mappedBy="tipostatus")
+	private List<Configview> configviews;
 
 	//bi-directional many-to-one association to Produto
 	@OneToMany(mappedBy="tipostatus")
@@ -33,11 +36,11 @@ public class Tipostatus implements Serializable {
 	public Tipostatus() {
 	}
 
-	public int getIdstatus() {
+	public Integer getIdstatus() {
 		return this.idstatus;
 	}
 
-	public void setIdstatus(int idstatus) {
+	public void setIdstatus(Integer idstatus) {
 		this.idstatus = idstatus;
 	}
 
@@ -55,6 +58,28 @@ public class Tipostatus implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Configview> getConfigviews() {
+		return this.configviews;
+	}
+
+	public void setConfigviews(List<Configview> configviews) {
+		this.configviews = configviews;
+	}
+
+	public Configview addConfigview(Configview configview) {
+		getConfigviews().add(configview);
+		configview.setTipostatus(this);
+
+		return configview;
+	}
+
+	public Configview removeConfigview(Configview configview) {
+		getConfigviews().remove(configview);
+		configview.setTipostatus(null);
+
+		return configview;
 	}
 
 	public List<Produto> getProdutos() {

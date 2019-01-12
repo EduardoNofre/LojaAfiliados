@@ -15,52 +15,51 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idProduto;
+	private Integer idProduto;
 
-	private String commentProd;
+	private String comentarioPord;
 
 	private String comprarLink;
 
-	private String descriptionProd;
+	private String descProduto;
 
 	private String email;
 
-	private String imageProd;
+	private String imagemProd;
 
 	private String linkVideo;
 
-	private String nameProd;
+	private String nomeProd;
 
 	private String whatsApp;
 
-	//bi-directional many-to-one association to Tipostatus
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idstatus")
-	private Tipostatus tipostatus;
-
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="idusuario")
 	private Usuario usuario;
+
+	//bi-directional many-to-one association to Tipostatus
+	@ManyToOne
+	@JoinColumn(name="idstatus")
+	private Tipostatus tipostatus;
 
 	public Produto() {
 	}
 
-	public int getIdProduto() {
+	public Integer getIdProduto() {
 		return this.idProduto;
 	}
 
-	public void setIdProduto(int idProduto) {
+	public void setIdProduto(Integer idProduto) {
 		this.idProduto = idProduto;
 	}
 
-	public String getCommentProd() {
-		return this.commentProd;
+	public String getComentarioPord() {
+		return this.comentarioPord;
 	}
 
-	public void setCommentProd(String commentProd) {
-		this.commentProd = commentProd;
+	public void setComentarioPord(String comentarioPord) {
+		this.comentarioPord = comentarioPord;
 	}
 
 	public String getComprarLink() {
@@ -71,12 +70,12 @@ public class Produto implements Serializable {
 		this.comprarLink = comprarLink;
 	}
 
-	public String getDescriptionProd() {
-		return this.descriptionProd;
+	public String getDescProduto() {
+		return this.descProduto;
 	}
 
-	public void setDescriptionProd(String descriptionProd) {
-		this.descriptionProd = descriptionProd;
+	public void setDescProduto(String descProduto) {
+		this.descProduto = descProduto;
 	}
 
 	public String getEmail() {
@@ -87,12 +86,12 @@ public class Produto implements Serializable {
 		this.email = email;
 	}
 
-	public String getImageProd() {
-		return this.imageProd;
+	public String getImagemProd() {
+		return this.imagemProd;
 	}
 
-	public void setImageProd(String imageProd) {
-		this.imageProd = imageProd;
+	public void setImagemProd(String imagemProd) {
+		this.imagemProd = imagemProd;
 	}
 
 	public String getLinkVideo() {
@@ -103,12 +102,12 @@ public class Produto implements Serializable {
 		this.linkVideo = linkVideo;
 	}
 
-	public String getNameProd() {
-		return this.nameProd;
+	public String getNomeProd() {
+		return this.nomeProd;
 	}
 
-	public void setNameProd(String nameProd) {
-		this.nameProd = nameProd;
+	public void setNomeProd(String nomeProd) {
+		this.nomeProd = nomeProd;
 	}
 
 	public String getWhatsApp() {
@@ -119,20 +118,20 @@ public class Produto implements Serializable {
 		this.whatsApp = whatsApp;
 	}
 
-	public Tipostatus getTipostatus() {
-		return this.tipostatus;
-	}
-
-	public void setTipostatus(Tipostatus tipostatus) {
-		this.tipostatus = tipostatus;
-	}
-
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Tipostatus getTipostatus() {
+		return this.tipostatus;
+	}
+
+	public void setTipostatus(Tipostatus tipostatus) {
+		this.tipostatus = tipostatus;
 	}
 
 }

@@ -17,35 +17,35 @@
 				<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="10">
 
 					<h:outputText value="Nome:" />
-					<p:inputText id="nome" />
+					<p:inputText id="nome" value="#{usuarioView.usuario.nome}"/>
 
 					<h:outputText value="Sobrenome:" />
-					<p:inputText id="snome" />
+					<p:inputText id="snome" value="#{usuarioView.usuario.ultimoNome}" />
 
 					<h:outputText value="E-mail:" />
-					<p:inputText id="email" />
+					<p:inputText id="email" value="#{usuarioView.usuario.email}"/>
 				</h:panelGrid>
 
-				<h:panelGrid columns="4" style="margin-bottom:0px" cellpadding="5">
+				<h:panelGrid columns="2" style="margin-bottom:0px" cellpadding="5">
 
 					<h:outputText  value="Senha:" />
-					<p:password id="Senha" value="#{passwordView.password3}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
+					<p:password id="Senha" value="#{usuarioView.usuario.senha}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
 
 					<h:outputText value="Confirma Senha:" />
-					<p:password id="cSenha" value="#{passwordView.password3}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
+					<p:password id="confirmaSenha" value="#{usuarioView.usuario.confirmaSenha}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
 				</h:panelGrid>
 
 				<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="10">
 
 					<h:outputText value="Foto Perfil:" />
-					<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" />
+					<p:fileUpload value="#{usuarioView.usuario.foto}" mode="simple" skinSimple="true" />
 
 				</h:panelGrid>
 
-			</h:form>
 			<center>
-				<p:commandButton value="Cadastrar" id="ajax" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+				<p:commandButton value="Cadastrar" id="ajax" action="#{usuarioView.cadastroUsuario}" style="margin-right:20px;" styleClass="ui-priority-primary" ajax="false"/>
 			</center>
+			</h:form>
 		</div>
 		<div class="overview-footer"></div>
 	</ui:define>

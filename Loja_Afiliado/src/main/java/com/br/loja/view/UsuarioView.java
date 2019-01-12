@@ -3,7 +3,7 @@ package com.br.loja.view;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,13 +20,11 @@ import com.br.loja.util.UsuarioLogado;
 
 @Controller
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UsuarioView extends BasicBBean implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
-	
-	//private static String PAGINA_SUCESSO_LOGIN = "login";
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -48,7 +46,7 @@ public class UsuarioView extends BasicBBean implements Serializable {
 
 		try {
 
-			usuarioAutentica = usuarioService.autentica(usuario);
+			usuarioAutentica = usuarioService.autenticaService(usuario);
 
 			if (!validaAdicionaUsuarioControleLogin(usuarioAutentica)) {
 
@@ -57,9 +55,11 @@ public class UsuarioView extends BasicBBean implements Serializable {
 				return "";
 			}
 
-			usuario = usuarioService.inicializarPerfisDoUsuario(usuarioAutentica);
+			usuario = usuarioService.inicializarPerfisDoUsuarioService(usuarioAutentica);
 
 			//criaUsuarioUtilitario();
+			
+			usuario = new Usuario();
 
 			return Constantes.PAGINA_SUCESSO_CONFIG;
 
@@ -118,7 +118,7 @@ public class UsuarioView extends BasicBBean implements Serializable {
 
 		try {
 
-			if (usuarioService.emailExiste(email) != null) {
+			if (usuarioService.emailExisteService(email) != null) {
 
 				return true;
 			}
@@ -129,5 +129,49 @@ public class UsuarioView extends BasicBBean implements Serializable {
 		}
 
 		return false;
+	}
+	
+	
+	public String cadastroUsuario(){
+		
+		if(usuario.getNome() == null){
+			
+			return null;
+		}
+		
+		if(usuario.getUltimoNome() == null){
+			
+			return null;
+		}
+		
+		if(usuario.getEmail() == null){
+			
+			return null;
+		}
+		
+		if(usuario.getSenha() == null){
+			
+			return null;
+		}
+		
+		if(usuario.getConfirmaSenha() == null){
+			
+			return null;
+		}
+		
+		if(usuario.getFoto() != null){
+			
+			return null;
+		}
+		
+		
+		if(!usuario.getSenha().equals(usuario.getConfirmaSenha())){
+			
+			return null;
+		}
+		
+		Usuario usuarioRetorno = usuarioService.cadastroService(usuario);
+		
+		return null;
 	}
 }

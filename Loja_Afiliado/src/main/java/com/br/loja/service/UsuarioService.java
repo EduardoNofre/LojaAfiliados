@@ -13,14 +13,16 @@ import com.br.loja.entity.Usuario;
  */
 public interface UsuarioService {
 	
-	public Usuario autentica(Usuario usuario) throws LoginException;
+	public Usuario autenticaService(Usuario usuario) throws LoginException;
 	
-	public Usuario buscarPorLoginESenha(String login, String senha) throws Exception;
+	public Usuario buscarPorLoginESenhaService(String login, String senha) throws Exception;
 	
-	public Usuario buscarPorLogin(String login) throws Exception;
+	public Usuario buscarPorLoginService(String login) throws Exception;
 	
-	public Usuario inicializarPerfisDoUsuario(Usuario usuario);
+	public Usuario inicializarPerfisDoUsuarioService(Usuario usuario);
 	
-	public Usuario emailExiste(String email)  throws Exception;
+	public Usuario emailExisteService(String email)  throws Exception;
+	
+	public Usuario cadastroService(Usuario usuario);
 
 }

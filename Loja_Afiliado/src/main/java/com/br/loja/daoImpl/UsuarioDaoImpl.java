@@ -59,4 +59,10 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		
 		return usuarioRepository.loginUsuario(email);
 	}
+
+	@Override
+	public Usuario cadastro(Usuario usuario) {
+		
+		return usuarioRepository.saveAndFlush(usuario);
+	}
 }

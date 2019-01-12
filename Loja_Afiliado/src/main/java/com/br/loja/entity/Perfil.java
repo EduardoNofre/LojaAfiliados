@@ -15,8 +15,7 @@ public class Perfil implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idperfil;
+	private Integer idperfil;
 
 	private String dscPerfil;
 
@@ -29,11 +28,11 @@ public class Perfil implements Serializable {
 	public Perfil() {
 	}
 
-	public int getIdperfil() {
+	public Integer getIdperfil() {
 		return this.idperfil;
 	}
 
-	public void setIdperfil(int idperfil) {
+	public void setIdperfil(Integer idperfil) {
 		this.idperfil = idperfil;
 	}
 
