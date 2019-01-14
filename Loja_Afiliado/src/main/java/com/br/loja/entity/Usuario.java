@@ -5,13 +5,14 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-import javax.transaction.Transactional;
 
 
 /**
@@ -24,7 +25,8 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idUsuario;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idUsuario;
 
 	private Timestamp dtregistro;
 
@@ -35,14 +37,17 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	private String senha;
-
-	@Transient
-	private String confirmaSenha; 
 	
+	@Transient
+	private String confirmaSenha;
+	
+	@Transient
+	private String message;
+
 	private Timestamp ultimoAcesso;
 
 	private String ultimoNome;
-	
+
 	//bi-directional many-to-one association to Configview
 	@OneToMany(mappedBy="usuario")
 	private List<Configview> configviews;
@@ -64,11 +69,11 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Integer getIdUsuario() {
+	public int getIdUsuario() {
 		return this.idUsuario;
 	}
 
-	public void setIdUsuario(Integer idUsuario) {
+	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
@@ -188,7 +193,6 @@ public class Usuario implements Serializable {
 		this.tipostatus = tipostatus;
 	}
 
-	@Transactional
 	public String getConfirmaSenha() {
 		return confirmaSenha;
 	}
@@ -196,5 +200,14 @@ public class Usuario implements Serializable {
 	public void setConfirmaSenha(String confirmaSenha) {
 		this.confirmaSenha = confirmaSenha;
 	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	
 }

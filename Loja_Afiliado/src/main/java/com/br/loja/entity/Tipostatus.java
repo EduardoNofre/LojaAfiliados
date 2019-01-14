@@ -15,7 +15,8 @@ public class Tipostatus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idstatus;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idstatus;
 
 	private String dscStatus;
 
@@ -36,11 +37,11 @@ public class Tipostatus implements Serializable {
 	public Tipostatus() {
 	}
 
-	public Integer getIdstatus() {
+	public int getIdstatus() {
 		return this.idstatus;
 	}
 
-	public void setIdstatus(Integer idstatus) {
+	public void setIdstatus(int idstatus) {
 		this.idstatus = idstatus;
 	}
 

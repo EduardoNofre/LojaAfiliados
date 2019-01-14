@@ -14,7 +14,8 @@ public class Configview implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idconfigView;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idconfigView;
 
 	private String footerColor;
 
@@ -24,9 +25,9 @@ public class Configview implements Serializable {
 
 	private String footerText;
 
-	private Integer gridColum;
+	private int gridColum;
 
-	private Integer gridLinha;
+	private int gridLinha;
 
 	private String headColor;
 
@@ -40,24 +41,24 @@ public class Configview implements Serializable {
 
 	private String registroAutoralText;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="idusuario")
-	private Usuario usuario;
-
 	//bi-directional many-to-one association to Tipostatus
 	@ManyToOne
 	@JoinColumn(name="idstatus")
 	private Tipostatus tipostatus;
 
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+	@JoinColumn(name="idusuario")
+	private Usuario usuario;
+
 	public Configview() {
 	}
 
-	public Integer getIdconfigView() {
+	public int getIdconfigView() {
 		return this.idconfigView;
 	}
 
-	public void setIdconfigView(Integer idconfigView) {
+	public void setIdconfigView(int idconfigView) {
 		this.idconfigView = idconfigView;
 	}
 
@@ -93,19 +94,19 @@ public class Configview implements Serializable {
 		this.footerText = footerText;
 	}
 
-	public Integer getGridColum() {
+	public int getGridColum() {
 		return this.gridColum;
 	}
 
-	public void setGridColum(Integer gridColum) {
+	public void setGridColum(int gridColum) {
 		this.gridColum = gridColum;
 	}
 
-	public Integer getGridLinha() {
+	public int getGridLinha() {
 		return this.gridLinha;
 	}
 
-	public void setGridLinha(Integer gridLinha) {
+	public void setGridLinha(int gridLinha) {
 		this.gridLinha = gridLinha;
 	}
 
@@ -157,20 +158,20 @@ public class Configview implements Serializable {
 		this.registroAutoralText = registroAutoralText;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public Tipostatus getTipostatus() {
 		return this.tipostatus;
 	}
 
 	public void setTipostatus(Tipostatus tipostatus) {
 		this.tipostatus = tipostatus;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

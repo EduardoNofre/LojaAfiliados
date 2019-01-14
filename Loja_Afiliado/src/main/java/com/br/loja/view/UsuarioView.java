@@ -2,6 +2,7 @@ package com.br.loja.view;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -134,27 +135,39 @@ public class UsuarioView extends BasicBBean implements Serializable {
 	
 	public String cadastroUsuario(){
 		
-		if(usuario.getNome() == null){
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		if(usuario.getNome() == null || usuario.getNome().trim() == ""){
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo nome não pode esta vazio."));
 			
 			return null;
 		}
 		
-		if(usuario.getUltimoNome() == null){
+		if(usuario.getUltimoNome() == null || usuario.getUltimoNome().trim() == ""){
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo Sobrenome nome não pode esta vazio."));
 			
 			return null;
 		}
 		
-		if(usuario.getEmail() == null){
+		if(usuario.getEmail() == null || usuario.getEmail().trim() == ""){
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo E-mail não pode esta vazio."));
 			
 			return null;
 		}
 		
-		if(usuario.getSenha() == null){
+		if(usuario.getSenha() == null || usuario.getSenha().trim() == ""){
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "Informe uma senha."));
 			
 			return null;
 		}
 		
-		if(usuario.getConfirmaSenha() == null){
+		if(usuario.getConfirmaSenha().trim() == null || usuario.getConfirmaSenha().trim() == ""){
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "Confirma senha não pode esta vazio."));
 			
 			return null;
 		}
@@ -167,11 +180,24 @@ public class UsuarioView extends BasicBBean implements Serializable {
 		
 		if(!usuario.getSenha().equals(usuario.getConfirmaSenha())){
 			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "As senhas  não conferem."));
+			
 			return null;
 		}
 		
 		Usuario usuarioRetorno = usuarioService.cadastroService(usuario);
 		
+		if(usuarioRetorno.getIdUsuario() != 0) {
+			
+			usuario = new Usuario();
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso",  "Usuario cadastrado com sucesso.") );
+			
+			
+		}else {
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro",  "Erro ao tentar cadastrar usuario.") );
+		}
 		return null;
 	}
 }

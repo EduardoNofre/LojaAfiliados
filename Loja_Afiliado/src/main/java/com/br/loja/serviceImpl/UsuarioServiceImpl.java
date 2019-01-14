@@ -101,9 +101,9 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	public Usuario cadastroService(Usuario usuario){
 		
 		Perfil perfil = new Perfil();
+
 		Tipostatus tipostatus = new Tipostatus();
-		
-		
+
 		perfil.setIdperfil(1);
 		
 		tipostatus.setIdstatus(1);

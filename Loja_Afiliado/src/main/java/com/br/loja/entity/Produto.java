@@ -15,7 +15,8 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idProduto;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idProduto;
 
 	private String comentarioPord;
 
@@ -33,24 +34,24 @@ public class Produto implements Serializable {
 
 	private String whatsApp;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="idusuario")
-	private Usuario usuario;
-
 	//bi-directional many-to-one association to Tipostatus
 	@ManyToOne
 	@JoinColumn(name="idstatus")
 	private Tipostatus tipostatus;
 
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+	@JoinColumn(name="idusuario")
+	private Usuario usuario;
+
 	public Produto() {
 	}
 
-	public Integer getIdProduto() {
+	public int getIdProduto() {
 		return this.idProduto;
 	}
 
-	public void setIdProduto(Integer idProduto) {
+	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
 	}
 
@@ -118,20 +119,20 @@ public class Produto implements Serializable {
 		this.whatsApp = whatsApp;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public Tipostatus getTipostatus() {
 		return this.tipostatus;
 	}
 
 	public void setTipostatus(Tipostatus tipostatus) {
 		this.tipostatus = tipostatus;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

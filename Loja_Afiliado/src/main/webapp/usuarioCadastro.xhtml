@@ -14,37 +14,52 @@
 		<div class="card">
 			<h:form>
 
-				<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="10">
+ 			<p:growl id="messagem" showDetail="true" sticky="true" /> 
+ 
 
-					<h:outputText value="Nome:" />
-					<p:inputText id="nome" value="#{usuarioView.usuario.nome}"/>
+					<h:panelGrid columns="4" style="margin-bottom:10px"
+						cellpadding="10">
 
-					<h:outputText value="Sobrenome:" />
-					<p:inputText id="snome" value="#{usuarioView.usuario.ultimoNome}" />
+						<h:outputText value="Nome:" />
+						<p:inputText id="nome" value="#{usuarioView.usuario.nome}"/>
 
-					<h:outputText value="E-mail:" />
-					<p:inputText id="email" value="#{usuarioView.usuario.email}"/>
-				</h:panelGrid>
+						<h:outputText value="Sobrenome:" />
+						<p:inputText id="snome" value="#{usuarioView.usuario.ultimoNome}" />
 
-				<h:panelGrid columns="2" style="margin-bottom:0px" cellpadding="5">
+						<h:outputText value="E-mail:" />
+						<p:inputText id="email" value="#{usuarioView.usuario.email}" />
+					</h:panelGrid>
 
-					<h:outputText  value="Senha:" />
-					<p:password id="Senha" value="#{usuarioView.usuario.senha}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
+					<h:panelGrid columns="2" style="margin-bottom:0px" cellpadding="5">
 
-					<h:outputText value="Confirma Senha:" />
-					<p:password id="confirmaSenha" value="#{usuarioView.usuario.confirmaSenha}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
-				</h:panelGrid>
+						<h:outputText value="Senha:" />
+						<p:password id="Senha" value="#{usuarioView.usuario.senha}"
+							feedback="true" promptLabel="simples" weakLabel="fraca"
+							goodLabel="media" strongLabel="forte" />
 
-				<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="10">
+						<h:outputText value="Confirma Senha:" />
+						<p:password id="confirmaSenha"
+							value="#{usuarioView.usuario.confirmaSenha}" feedback="true"
+							promptLabel="simples" weakLabel="fraca" goodLabel="media"
+							strongLabel="forte" />
+					</h:panelGrid>
 
-					<h:outputText value="Foto Perfil:" />
-					<p:fileUpload value="#{usuarioView.usuario.foto}" mode="simple" skinSimple="true" />
+					<h:panelGrid columns="3" style="margin-bottom:10px"
+						cellpadding="10">
 
-				</h:panelGrid>
+						<h:outputText value="Foto Perfil:" />
+						<p:fileUpload value="#{usuarioView.usuario.foto}" mode="simple"
+							skinSimple="true" />
 
-			<center>
-				<p:commandButton value="Cadastrar" id="ajax" action="#{usuarioView.cadastroUsuario}" style="margin-right:20px;" styleClass="ui-priority-primary" ajax="false"/>
-			</center>
+					</h:panelGrid>
+
+					<center>
+						<p:commandButton value="Cadastrar" id="ajax"
+							action="#{usuarioView.cadastroUsuario}"
+							style="margin-right:20px;" styleClass="ui-priority-primary"
+							update="messagem"
+							ajax="true" />
+					</center>
 			</h:form>
 		</div>
 		<div class="overview-footer"></div>
