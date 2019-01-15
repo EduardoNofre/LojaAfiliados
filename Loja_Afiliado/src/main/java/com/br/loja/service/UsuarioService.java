@@ -21,7 +21,7 @@ public interface UsuarioService {
 	
 	public Usuario inicializarPerfisDoUsuarioService(Usuario usuario);
 	
-	public Usuario emailExisteService(String email)  throws Exception;
+	public Usuario emailExisteService(String email);
 	
 	public Usuario cadastroService(Usuario usuario);
 

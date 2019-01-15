@@ -14,18 +14,17 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-
 /**
  * The persistent class for the usuario database table.
  * 
  */
 @Entity
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUsuario;
 
 	private Timestamp dtregistro;
@@ -37,33 +36,36 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	private String senha;
-	
+
 	@Transient
 	private String confirmaSenha;
-	
+
 	@Transient
 	private String message;
+
+	@Transient
+	private boolean existeEmail;
 
 	private Timestamp ultimoAcesso;
 
 	private String ultimoNome;
 
-	//bi-directional many-to-one association to Configview
-	@OneToMany(mappedBy="usuario")
+	// bi-directional many-to-one association to Configview
+	@OneToMany(mappedBy = "usuario")
 	private List<Configview> configviews;
 
-	//bi-directional many-to-one association to Produto
-	@OneToMany(mappedBy="usuario")
+	// bi-directional many-to-one association to Produto
+	@OneToMany(mappedBy = "usuario")
 	private List<Produto> produtos;
 
-	//bi-directional many-to-one association to Perfil
+	// bi-directional many-to-one association to Perfil
 	@ManyToOne
-	@JoinColumn(name="idperfil")
+	@JoinColumn(name = "idperfil")
 	private Perfil perfil;
 
-	//bi-directional many-to-one association to Tipostatus
+	// bi-directional many-to-one association to Tipostatus
 	@ManyToOne
-	@JoinColumn(name="idstatus")
+	@JoinColumn(name = "idstatus")
 	private Tipostatus tipostatus;
 
 	public Usuario() {
@@ -209,5 +211,12 @@ public class Usuario implements Serializable {
 		this.message = message;
 	}
 
-	
+	public boolean isExisteEmail() {
+		return existeEmail;
+	}
+
+	public void setExisteEmail(boolean existeEmail) {
+		this.existeEmail = existeEmail;
+	}
+
 }

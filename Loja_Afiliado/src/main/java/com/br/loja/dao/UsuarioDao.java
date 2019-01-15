@@ -6,7 +6,7 @@ public interface UsuarioDao {
 
 	public Usuario logar(Usuario usuario);
 	
-	Usuario buscarPorLogin(String login) throws Exception;
+	Usuario buscarPorLogin(String login);
 	
 	public Usuario buscarPorLoginESenha(String login, String senha);
 	

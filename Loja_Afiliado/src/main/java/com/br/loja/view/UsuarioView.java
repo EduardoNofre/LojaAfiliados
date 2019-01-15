@@ -22,7 +22,7 @@ import com.br.loja.util.UsuarioLogado;
 @Controller
 @ManagedBean
 @SessionScoped
-public class UsuarioView extends BasicBBean implements Serializable {
+public class UsuarioView  extends BasicBBean implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
@@ -59,7 +59,7 @@ public class UsuarioView extends BasicBBean implements Serializable {
 			usuario = usuarioService.inicializarPerfisDoUsuarioService(usuarioAutentica);
 
 			//criaUsuarioUtilitario();
-			
+
 			usuario = new Usuario();
 
 			return Constantes.PAGINA_SUCESSO_CONFIG;
@@ -131,73 +131,90 @@ public class UsuarioView extends BasicBBean implements Serializable {
 
 		return false;
 	}
-	
-	
+
+
 	public String cadastroUsuario(){
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
-		
+
 		if(usuario.getNome() == null || usuario.getNome().trim() == ""){
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo nome não pode esta vazio."));
-			
+
 			return null;
 		}
-		
+
 		if(usuario.getUltimoNome() == null || usuario.getUltimoNome().trim() == ""){
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo Sobrenome nome não pode esta vazio."));
-			
+
 			return null;
 		}
-		
+
 		if(usuario.getEmail() == null || usuario.getEmail().trim() == ""){
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo E-mail não pode esta vazio."));
-			
+
 			return null;
 		}
-		
+
 		if(usuario.getSenha() == null || usuario.getSenha().trim() == ""){
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "Informe uma senha."));
-			
+
 			return null;
 		}
-		
+
 		if(usuario.getConfirmaSenha().trim() == null || usuario.getConfirmaSenha().trim() == ""){
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "Confirma senha não pode esta vazio."));
-			
+
 			return null;
 		}
-		
+
 		if(usuario.getFoto() != null){
-			
+
 			return null;
 		}
-		
-		
+
+
 		if(!usuario.getSenha().equals(usuario.getConfirmaSenha())){
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "As senhas  não conferem."));
-			
+
 			return null;
 		}
-		
+
 		Usuario usuarioRetorno = usuarioService.cadastroService(usuario);
-		
+
 		if(usuarioRetorno.getIdUsuario() != 0) {
-			
+
 			usuario = new Usuario();
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso",  "Usuario cadastrado com sucesso.") );
-			
-			
+
+
 		}else {
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro",  "Erro ao tentar cadastrar usuario.") );
 		}
 		return null;
+	}
+
+	public Usuario buscaEmail(){
+
+		if(usuario.getEmail() == null || usuario.getEmail().trim() == ""){
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo E-mail não pode esta vazio."));
+
+			return null;
+
+		}else{
+
+			Usuario usuario = usuarioService.emailExisteService(usuario.getEmail());
+
+			return usuario;
+
+		}
 	}
 }

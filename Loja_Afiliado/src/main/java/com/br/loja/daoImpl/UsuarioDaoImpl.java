@@ -24,7 +24,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Override
 	@Transactional
-	public Usuario buscarPorLogin(String email) throws Exception {
+	public Usuario buscarPorLogin(String email){
 		
 		return usuarioRepository.loginUsuario(email);
 
