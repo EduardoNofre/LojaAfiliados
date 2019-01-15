@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15329187974400" configfile="/Loja_Afiliado/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="946" id="pf15458567289110" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf15468936533648 pf154689369068010 pf154689415533513 pf15469861600939 pf154698616624011 pf154699838205213 pf154699838205214 pf154699838205215 pf154699844066419" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="946" id="pf15458567289110" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15468936533648 pf154689369068010 pf154689415533513 pf154750594352412 pf154750594352413 pf154750594352414 pf154750594352415 pf154750594352416 pf154750594352417" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="principal.xhtml?faces-redirect=true" x="338" y="178" id="pf15468936533659" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15468936533648" path="/principal.xhtml?faces-redirect=true"/>
   <nodes xsi:type="pageflow:PFPage" name="administrador.xhtml?faces-redirect=true" x="338" y="562" id="pf154689369068011" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf154689369068010" path="/administrador.xhtml?faces-redirect=true"/>
-  <nodes xsi:type="pageflow:PFPage" name="dashboard.xhtml?faces-redirect=true" x="338" y="946" id="pf154689415533614" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf154689415533513" path="/dashboard.xhtml?faces-redirect=true"/>
-  <nodes xsi:type="pageflow:PFPage" name="usuarioExclusao.xhtml" id="pf154698616009310" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf15469861600939" path="/usuarioExclusao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="usuarioCadastro.xhtml" id="pf154698616624012" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf154698616624011" path="/usuarioCadastro.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="produtoExclusao.xhtml" id="pf154699838205216" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf154699838205213" path="/produtoExclusao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="produtoCadastro.xhtml" id="pf154699838205217" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf154699838205214" path="/produtoCadastro.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="produtoAlterar.xhtml" id="pf154699838205218" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" inlinks="pf154699838205215" path="/produtoAlterar.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="usuarioAlterar.xhtml" id="pf154699844066520" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf154699844066419" path="/usuarioAlterar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="dashboard.xhtml?faces-redirect=true" x="338" y="946" id="pf154689415533614" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf154689415533513" path="/dashboard.xhtml?faces-redirect=true"/>
+  <nodes xsi:type="pageflow:PFPage" name="produtoAlterar.xhtml" id="pf154750594352518" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" inlinks="pf154750594352412" path="/produtoAlterar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="produtoCadastro.xhtml" id="pf154750594352519" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf154750594352413" path="/produtoCadastro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="produtoExclusao.xhtml" id="pf154750594352520" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf154750594352414" path="/produtoExclusao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="usuarioAlterar.xhtml" id="pf154750594352521" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf154750594352415" path="/usuarioAlterar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="usuarioCadastro.xhtml" id="pf154750594352522" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf154750594352416" path="/usuarioCadastro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="usuarioExclusao.xhtml" id="pf154750594352523" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf154750594352417" path="/usuarioExclusao.xhtml"/>
   <links id="pf15468936533648" target="pf15468936533659" source="pf15458567289110" outcome="principal"/>
   <links id="pf154689369068010" target="pf154689369068011" source="pf15458567289110" outcome="administrador"/>
   <links id="pf154689415533513" target="pf154689415533614" source="pf15458567289110" outcome="dashboard"/>
-  <links id="pf15469861600939" target="pf154698616009310" source="pf15458567289110" outcome="usuarioExclusao"/>
-  <links id="pf154698616624011" target="pf154698616624012" source="pf15458567289110" outcome="usuarioCadastro"/>
-  <links id="pf154699838205213" target="pf154699838205216" source="pf15458567289110" outcome="produtoExclusao"/>
-  <links id="pf154699838205214" target="pf154699838205217" source="pf15458567289110" outcome="produtoCadastro"/>
-  <links id="pf154699838205215" target="pf154699838205218" source="pf15458567289110" outcome="produtoAlterar"/>
-  <links id="pf154699844066419" target="pf154699844066520" source="pf15458567289110" outcome="usuarioAlterar"/>
+  <links id="pf154750594352412" target="pf154750594352518" source="pf15458567289110" outcome="produtoAlterar"/>
+  <links id="pf154750594352413" target="pf154750594352519" source="pf15458567289110" outcome="produtoCadastro"/>
+  <links id="pf154750594352414" target="pf154750594352520" source="pf15458567289110" outcome="produtoExclusao"/>
+  <links id="pf154750594352415" target="pf154750594352521" source="pf15458567289110" outcome="usuarioAlterar"/>
+  <links id="pf154750594352416" target="pf154750594352522" source="pf15458567289110" outcome="usuarioCadastro"/>
+  <links id="pf154750594352417" target="pf154750594352523" source="pf15458567289110" outcome="usuarioExclusao"/>
 </pageflow:Pageflow>
