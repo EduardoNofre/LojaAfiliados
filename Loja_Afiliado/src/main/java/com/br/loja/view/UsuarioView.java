@@ -215,7 +215,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 			usuario = usuarioRetorno;
 
-			 return usuario;
+			 return usuarioRetorno;
 
 		}
 	}
