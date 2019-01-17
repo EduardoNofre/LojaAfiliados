@@ -2,6 +2,7 @@ package com.br.loja.serviceImpl;
 
 import javax.security.auth.login.LoginException;
 
+import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -98,13 +99,13 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 		
 		if(usuario != null){
 			
-			usuario.setExisteEmail(true);
+			usuario.setExisteEmail(false);
 			
 		}else{
 			
 			usuario = new Usuario();
 			
-			usuario.setExisteEmail(false);
+			usuario.setExisteEmail(true);
 		}
 		
 		return usuario;
@@ -126,6 +127,8 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 		usuario.setPerfil(perfil);
 		
 		usuario.setTipostatus(tipostatus);
+		
+		RequestContext.getCurrentInstance().closeDialog("dlg");
 		
 		return usuarioDao.cadastro(usuario);
 	}

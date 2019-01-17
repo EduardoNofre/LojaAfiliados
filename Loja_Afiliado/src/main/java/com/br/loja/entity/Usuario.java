@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
 	private String message;
 
 	@Transient
-	private boolean existeEmail;
+	private boolean existeEmail = true;
 
 	private Timestamp ultimoAcesso;
 
