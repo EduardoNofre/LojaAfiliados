@@ -219,4 +219,13 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		}
 	}
+	
+	public String setdialof() {
+		
+		usuario = new Usuario();
+		
+		usuario.setExisteEmail(true);
+		
+		return "usuarioAlterar";
+	}
 }
