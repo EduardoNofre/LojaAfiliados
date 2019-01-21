@@ -122,8 +122,6 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 
 		tipostatus.setIdstatus(1);
 
-		Produto produto = new Produto();
-
 		usuario.setPerfil(perfil);
 
 		usuario.setTipostatus(tipostatus);

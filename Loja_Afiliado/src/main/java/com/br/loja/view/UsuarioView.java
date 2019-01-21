@@ -24,7 +24,6 @@ import com.br.loja.util.UsuarioLogado;
 @SessionScoped
 public class UsuarioView  extends BasicBBean implements Serializable {
 
-
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
@@ -215,7 +214,6 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 			usuario = usuarioRetorno;
 
 			return usuario;
-
 		}
 	}
 
@@ -225,7 +223,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		usuario.setExisteEmail(true);
 
-		return Constantes.EMAILUSUARIOEXCLUSAO;
+		return Constantes.EMAILUSUARIOALTERA;
 	}
 
 	public String exibirDialogEmailUsuarioExclusao() {
@@ -237,14 +235,14 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 		return Constantes.EMAILUSUARIOEXCLUSAO;
 	}
 	
-	public Usuario alterarUsuario(Usuario usuario) {
+	public Usuario alterarUsuario() {
 		
 		usuarioService.alterarUsuarioService(usuario);
 		
 		return null;
 	}
 	
-	public Usuario exlcusaoUsuario(Usuario usuario) {
+	public Usuario exlcusaoUsuario() {
 		
 		usuarioService.exclusaoUsuarioService(usuario);
 		
