@@ -194,28 +194,29 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		}else {
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro",  "Erro ao tentar cadastrar usuario.") );
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro",  " Erro ao tentar cadastrar usuario.") );
 		}
 		return null;
 	}
 
 	public Usuario buscaEmail() {
 
-		if (usuario.getEmail() == null || usuario.getEmail().trim() == "") {
+		Usuario usuarioRetorno = usuarioService.emailExisteService(usuario.getEmail());
 
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "O campo E-mail não pode esta vazio."));
-
-			return usuario;
-
-		} else {
-
-			Usuario usuarioRetorno = usuarioService.emailExisteService(usuario.getEmail());
-
+		if(usuarioRetorno.getEmail() == null){
+			
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Aviso: O campo E-mail não pode esta vazio."));
+			
+			return null;
+			
+		}else{
+			
 			usuario = usuarioRetorno;
-
-			return usuario;
+			
 		}
+		return usuario;
 	}
+
 
 	public String exibirDialogEmailUsuarioAltera() {
 
@@ -234,19 +235,19 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		return Constantes.EMAILUSUARIOEXCLUSAO;
 	}
-	
+
 	public Usuario alterarUsuario() {
-		
+
 		usuarioService.alterarUsuarioService(usuario);
-		
+
 		return null;
 	}
-	
+
 	public Usuario exlcusaoUsuario() {
-		
+
 		usuarioService.exclusaoUsuarioService(usuario);
-		
+
 		return null;
 	}
-	
+
 }
