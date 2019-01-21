@@ -24,5 +24,9 @@ public interface UsuarioService {
 	public Usuario emailExisteService(String email);
 	
 	public Usuario cadastroService(Usuario usuario);
+	
+	public Usuario alterarUsuarioService(Usuario usuario);
+	
+	public Usuario exclusaoUsuarioService(Usuario usuario);
 
 }

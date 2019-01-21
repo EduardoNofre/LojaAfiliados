@@ -49,12 +49,11 @@
                     
                     <pu:menu widgetVar="me">
                         <p:menuitem id="um_dashboard" value="Dashboard" icon="&#xE871;" outcome="/dashboard"/>
-
                         
                         <p:submenu id="cad_usu" label="Usuario" icon="&#xE40A;">
                             <p:menuitem id="cad_usu0" value="Cadastro" icon="&#xE88B;" outcome="/usuarioCadastro" />
-                            <p:menuitem id="cad_usu1" value="Alteração" icon="&#xE88B;" ajax="false" action="#{usuarioView.setdialof}"/>
-                            <p:menuitem id="cad_usu2" value="Exclusão" icon="&#xE88B;" outcome="/usuarioExclusao" />
+                            <p:menuitem id="cad_usu1" value="Alteração" icon="&#xE88B;" ajax="false" action="#{usuarioView.exibirDialogEmailUsuarioAltera}"/>
+                            <p:menuitem id="cad_usu2" value="Exclusão" icon="&#xE88B;" ajax="false" action="#{usuarioView.exibirDialogEmailUsuarioExclusao}"/>
                         </p:submenu>
                         
                          <p:submenu id="cad_produto" label="Produto" icon="&#xE40A;">

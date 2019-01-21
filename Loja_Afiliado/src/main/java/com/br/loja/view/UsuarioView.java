@@ -187,12 +187,11 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		Usuario usuarioRetorno = usuarioService.cadastroService(usuario);
 
-		if(usuarioRetorno.getIdUsuario() != 0) {
+		if (usuarioRetorno.getIdUsuario() != 0) {
 
 			usuario = new Usuario();
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso",  "Usuario cadastrado com sucesso.") );
-
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Usuario cadastrado com sucesso."));
 
 		}else {
 
@@ -201,31 +200,55 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 		return null;
 	}
 
-	public Usuario buscaEmail(){
+	public Usuario buscaEmail() {
 
-		if(usuario.getEmail() == null || usuario.getEmail().trim() == ""){
+		if (usuario.getEmail() == null || usuario.getEmail().trim() == "") {
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo E-mail não pode esta vazio."));
-			
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "O campo E-mail não pode esta vazio."));
+
 			return usuario;
 
-		}else{
+		} else {
 
 			Usuario usuarioRetorno = usuarioService.emailExisteService(usuario.getEmail());
-			
+
 			usuario = usuarioRetorno;
 
 			return usuario;
 
 		}
 	}
-	
-	public String setdialof() {
-		
+
+	public String exibirDialogEmailUsuarioAltera() {
+
 		usuario = new Usuario();
-		
+
 		usuario.setExisteEmail(true);
-		
-		return "usuarioAlterar";
+
+		return Constantes.EMAILUSUARIOEXCLUSAO;
 	}
+
+	public String exibirDialogEmailUsuarioExclusao() {
+
+		usuario = new Usuario();
+
+		usuario.setExisteEmail(true);
+
+		return Constantes.EMAILUSUARIOEXCLUSAO;
+	}
+	
+	public Usuario alterarUsuario(Usuario usuario) {
+		
+		usuarioService.alterarUsuarioService(usuario);
+		
+		return null;
+	}
+	
+	public Usuario exlcusaoUsuario(Usuario usuario) {
+		
+		usuarioService.exclusaoUsuarioService(usuario);
+		
+		return null;
+	}
+	
 }

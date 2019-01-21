@@ -11,44 +11,56 @@
 			library="ultima-layout" style="width: 100%" />
 
 		<div class="card">
-			<h:form>
+		
+					<h:form id="formDialogExclusao">
+			 		<p:dialog 	id="dlg" 
+			 					header=" Informe o E-mail do usuario a ser alterado " 
+			 					widgetVar="dlg" 
+			 					minHeight="40" 
+			 					visible="#{usuarioView.usuario.existeEmail}" 
+			 					modal="true" 
+			 					draggable="false" 
+			 					resizable="false">    		
+			 								
+    						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">    				
+    							<h:outputText value="E-mail:" />
+								<p:inputText id="emailDialog" value="#{usuarioView.usuario.email}" />
+							</h:panelGrid>
+					
+							<h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5" >	
+								<p:commandButton value="buscar" id="ajaxs" update="formDialogExclusao:dlg principal" action="#{usuarioView.buscaEmail}"  style="margin-right:20px;" styleClass="ui-priority-primary"  />
+							</h:panelGrid>
+					
+			 		</p:dialog>
+			 	</h:form>
+			 	
+			<h:form id="principal">
+					<h:panelGrid columns="4" style="margin-bottom:10px"
+						cellpadding="10">
 
-			 <p:dialog header="Informe o E-mail do usuario a ser excluido " widgetVar="dlg1" minHeight="40" visible="true" modal="true">
-    				<h:outputText value="Resistance to PrimeFaces is futile!" />
-			 </p:dialog>
-			 
-				<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="10">
+						<h:outputText value="Nome:" />
+						<p:inputText id="nome" value="#{usuarioView.usuario.nome}"/>
 
-					<h:outputText value="Nome:" />
-					<p:inputText id="nome" />
+						<h:outputText value="Sobrenome:" />
+						<p:inputText id="snome" value="#{usuarioView.usuario.ultimoNome}" />
 
-					<h:outputText value="Sobrenome:" />
-					<p:inputText id="snome" />
+						<h:outputText value="E-mail:" />
+						<p:inputText id="email" value="#{usuarioView.usuario.email}" />
+					</h:panelGrid>
 
-					<h:outputText value="E-mail:" />
-					<p:inputText id="email" />
-				</h:panelGrid>
+					<h:panelGrid columns="3" style="margin-bottom:10px"
+						cellpadding="10">
 
-				<h:panelGrid columns="4" style="margin-bottom:0px" cellpadding="5">
+						<h:outputText value="Foto Perfil:" />
+						<p:fileUpload value="#{usuarioView.usuario.foto}" mode="simple"
+							skinSimple="true" />
 
-					<h:outputText  value="Senha:" />
-					<p:password id="Senha" value="#{passwordView.password3}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
-
-					<h:outputText value="Confirma Senha:" />
-					<p:password id="cSenha" value="#{passwordView.password3}" feedback="true" promptLabel="simples" weakLabel="fraca" goodLabel="media" strongLabel="forte" />
-				</h:panelGrid>
-
-				<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="10">
-
-					<h:outputText value="Foto Perfil:" />
-					<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" />
-
-				</h:panelGrid>
-
-			</h:form>
+					</h:panelGrid>
 			<center>
-				<p:commandButton value="Exclusão" id="ajax" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+				<p:commandButton value="Exclusão" id="ajax" action="#{usuarioView.exlcusaoUsuario}" style="margin-right:20px;" styleClass="ui-priority-primary" />
 			</center>
+			</h:form>
+
 		</div>
 		<div class="overview-footer"></div>
 	</ui:define>

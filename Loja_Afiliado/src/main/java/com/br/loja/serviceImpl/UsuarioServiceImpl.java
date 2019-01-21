@@ -93,43 +93,58 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	}
 
 	@Override
-	public Usuario emailExisteService(String email){
-		
-		Usuario usuario =  usuarioDao.buscarPorLogin(email);
-		
-		if(usuario != null){
-			
+	public Usuario emailExisteService(String email) {
+
+		Usuario usuario = usuarioDao.buscarPorLogin(email);
+
+		if (usuario != null) {
+
 			usuario.setExisteEmail(false);
-			
-		}else{
-			
+
+		} else {
+
 			usuario = new Usuario();
-			
+
 			usuario.setExisteEmail(true);
 		}
-		
+
 		return usuario;
 	}
 
 	@Override
-	public Usuario cadastroService(Usuario usuario){
-		
+	public Usuario cadastroService(Usuario usuario) {
+
 		Perfil perfil = new Perfil();
 
 		Tipostatus tipostatus = new Tipostatus();
 
 		perfil.setIdperfil(1);
-		
+
 		tipostatus.setIdstatus(1);
-		
+
 		Produto produto = new Produto();
-		
+
 		usuario.setPerfil(perfil);
-		
+
 		usuario.setTipostatus(tipostatus);
-		
+
 		RequestContext.getCurrentInstance().closeDialog("dlg");
-		
+
 		return usuarioDao.cadastro(usuario);
 	}
+
+	@Override
+	public Usuario alterarUsuarioService(Usuario usuario) {
+
+		return usuarioDao.alterarUsuario(usuario);
+
+	}
+
+	@Override
+	public Usuario exclusaoUsuarioService(Usuario usuario) {
+
+		return usuarioDao.exclusaoUsuario(usuario);
+
+	}
+
 }

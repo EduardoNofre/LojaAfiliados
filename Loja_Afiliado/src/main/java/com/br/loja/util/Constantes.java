@@ -15,4 +15,9 @@ public class Constantes {
 	public static final String PAGINA_SUCESSO_CONFIG = "dashboard";
 	
 	public static final String PAGINA_ERRO_LOGIN = "login";
+	
+	public static final String EMAILUSUARIOALTERA = "usuarioAlterar";
+	
+	public static final String EMAILUSUARIOEXCLUSAO = "usuarioExclusao";
+	
 }

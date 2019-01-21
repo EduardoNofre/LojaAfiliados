@@ -65,4 +65,21 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		
 		return usuarioRepository.saveAndFlush(usuario);
 	}
+
+	@Override
+	public Usuario alterarUsuario(Usuario usuario) {
+		
+		usuarioRepository.delete(usuario);
+		
+		
+		return null;
+	}
+
+	@Override
+	public Usuario exclusaoUsuario(Usuario usuario) {
+		// passar o id para update
+		usuarioRepository.save(usuario);
+		
+		return null;
+	}
 }
