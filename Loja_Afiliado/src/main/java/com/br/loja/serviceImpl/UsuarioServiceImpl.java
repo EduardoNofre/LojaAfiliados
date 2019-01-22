@@ -95,6 +95,7 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	@Override
 	public Usuario emailExisteService(String email) {
 
+	
 		Usuario usuario = usuarioDao.buscarPorLogin(email);
 
 		if (usuario != null) {
@@ -104,8 +105,8 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 		} else {
 
 			usuario = new Usuario();
-
 			usuario.setExisteEmail(true);
+			usuario.setEmail(null);
 		}
 
 		return usuario;
