@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.br.loja.dao.UsuarioDao;
 import com.br.loja.entity.Perfil;
-import com.br.loja.entity.Produto;
 import com.br.loja.entity.Tipostatus;
 import com.br.loja.entity.Usuario;
 import com.br.loja.service.UsuarioService;
 import com.br.loja.util.BasicBBean;
 import com.br.loja.util.Constantes;
+import com.br.loja.util.PasswordEncrypter;
 import com.br.loja.util.StringUtil;
 
 @Service
@@ -31,6 +31,8 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	public Usuario autenticaService(Usuario usuario) throws LoginException {
 
 		String senhaDigitada = usuario.getSenha();
+		
+		//String legacyPassword = PasswordEncrypter.getEncodedLegacyPassword(senhaDigitada);
 
 		if (!this.validaUsuarioESenha(usuario)) {
 
@@ -42,16 +44,19 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 			usuario = this.buscarPorLoginService(usuario.getEmail());
 
 		} catch (Exception e) {
+			
 			throw new LoginException(e.getMessage());
 		}
 
 		// verifica se existe
 		if (usuario == null) {
+			
 			throw new LoginException(AVIS0_LOGIN_NAO_ENCONTRADO);
 		}
 
 		// verifica se esta ativo
 		if (usuario.getTipostatus().getIdstatus() == 4) {
+			
 			throw new LoginException(AVIS0_USUARIO_INATIVO);
 		}
 

@@ -205,7 +205,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		if(usuarioRetorno.getEmail() == null){
 			
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Aviso: O campo E-mail não pode esta vazio."));
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Aviso: O e-mail não foi encontrado."));
 			
 			usuario = usuarioRetorno;
 			

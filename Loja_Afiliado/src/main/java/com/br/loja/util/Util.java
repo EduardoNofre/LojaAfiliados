@@ -23,8 +23,6 @@ import org.primefaces.model.StreamedContent;
  */
 public class Util {
 	
-	
-
 	private static ByteArrayOutputStream getBytes(File file) {
 
 		ByteArrayOutputStream out = null;
@@ -95,4 +93,6 @@ public class Util {
 
 		return imagesPrincipalProdutos;
 	}
+	
+	
 }

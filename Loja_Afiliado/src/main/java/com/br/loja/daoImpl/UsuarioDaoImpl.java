@@ -20,14 +20,14 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	@Transactional
 	public Usuario logar(Usuario usuario) {	
 
-		return usuarioRepository.loginUsuario(usuario.getEmail());
+		return usuarioRepository.findByEmail(usuario.getEmail());
 	}
 
 	@Override
 	@Transactional
 	public Usuario buscarPorLogin(String email){
 
-		return usuarioRepository.loginUsuario(email);
+		return usuarioRepository.findByEmail(email);
 
 	}
 
