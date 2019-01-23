@@ -3,6 +3,8 @@
  */
 package com.br.loja.service;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.security.auth.login.LoginException;
 
 import com.br.loja.entity.Usuario;
@@ -13,7 +15,7 @@ import com.br.loja.entity.Usuario;
  */
 public interface UsuarioService {
 	
-	public Usuario autenticaService(Usuario usuario) throws LoginException;
+	public Usuario autenticaService(Usuario usuario) throws LoginException, NoSuchAlgorithmException;
 	
 	public Usuario buscarPorLoginESenhaService(String login, String senha) throws Exception;
 	
@@ -23,7 +25,7 @@ public interface UsuarioService {
 	
 	public Usuario emailExisteService(String email);
 	
-	public Usuario cadastroService(Usuario usuario);
+	public Usuario cadastroService(Usuario usuario) throws NoSuchAlgorithmException ;
 	
 	public Usuario alterarUsuarioService(Usuario usuario);
 	

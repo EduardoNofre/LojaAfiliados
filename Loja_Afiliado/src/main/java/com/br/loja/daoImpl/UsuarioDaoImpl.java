@@ -33,9 +33,9 @@ public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Override
 	@Transactional
-	public Usuario buscarPorLoginESenha(String login, String senha) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario buscarPorLoginESenha(String email, String senha) {
+
+		return usuarioRepository.loginUsuario(email,senha);
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	@Transactional
 	public Usuario emailExiste(String email) {
 
-		return usuarioRepository.loginUsuario(email);
+		return usuarioRepository.findByEmail(email);
 	}
 
 	@Override

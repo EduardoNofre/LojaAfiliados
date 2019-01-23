@@ -1,5 +1,7 @@
 package com.br.loja.serviceImpl;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.security.auth.login.LoginException;
 
 import org.primefaces.context.RequestContext;
@@ -28,11 +30,9 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	private UsuarioDao usuarioDao;
 
 	@Override
-	public Usuario autenticaService(Usuario usuario) throws LoginException {
+	public Usuario autenticaService(Usuario usuario) throws LoginException, NoSuchAlgorithmException {
 
-		String senhaDigitada = usuario.getSenha();
-		
-		//String legacyPassword = PasswordEncrypter.getEncodedLegacyPassword(senhaDigitada);
+		String senhaCryptografada = PasswordEncrypter.getEncodedLegacyPassword(usuario.getSenha());
 
 		if (!this.validaUsuarioESenha(usuario)) {
 
@@ -41,7 +41,7 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 
 		try {
 
-			usuario = this.buscarPorLoginService(usuario.getEmail());
+			usuario = this.buscarPorLoginESenhaService(usuario.getEmail(),senhaCryptografada);
 
 		} catch (Exception e) {
 			
@@ -80,7 +80,6 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	@Override
 	public Usuario inicializarPerfisDoUsuarioService(Usuario usuario) {
 		return usuario = usuarioDao.buscaUsuarioId(usuario.getIdUsuario());
-		// return usuarioDao.inicializarPerfisDoUsuario(usuario);
 	}
 
 	private boolean validaUsuarioESenha(Usuario usuario) {
@@ -99,8 +98,7 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 
 	@Override
 	public Usuario emailExisteService(String email) {
-
-	
+		
 		Usuario usuario = usuarioDao.buscarPorLogin(email);
 
 		if (usuario != null) {
@@ -118,7 +116,7 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 	}
 
 	@Override
-	public Usuario cadastroService(Usuario usuario) {
+	public Usuario cadastroService(Usuario usuario) throws NoSuchAlgorithmException {
 
 		Perfil perfil = new Perfil();
 
@@ -131,6 +129,8 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 		usuario.setPerfil(perfil);
 
 		usuario.setTipostatus(tipostatus);
+		
+		usuario.setSenha(PasswordEncrypter.getEncodedLegacyPassword(usuario.getSenha()));
 
 		RequestContext.getCurrentInstance().closeDialog("dlg");
 

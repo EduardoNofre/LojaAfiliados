@@ -1,6 +1,7 @@
 package com.br.loja.view;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -40,7 +41,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 	}
 
 
-	public String login() {
+	public String login() throws NoSuchAlgorithmException {
 
 		Usuario usuarioAutentica = null;
 
@@ -132,7 +133,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 	}
 
 
-	public String cadastroUsuario(){
+	public String cadastroUsuario() throws NoSuchAlgorithmException{
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
