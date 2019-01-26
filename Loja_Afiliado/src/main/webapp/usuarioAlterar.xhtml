@@ -44,7 +44,7 @@
 
 				<h:form id="principal">
 
-						<p:messages id="messagems">
+						<p:messages id="messagems" redisplay="false">
 							<p:autoUpdate />
 						</p:messages>
 						
@@ -72,7 +72,7 @@
 						<p:commandButton value="Alterar" id="ajax"
 							action="#{usuarioView.alterarUsuario}" 
 							style="margin-right:20px;"
-							update="principal"
+							update="messagems"
 							styleClass="ui-priority-primary" />
 					</center>
 				</h:form>
