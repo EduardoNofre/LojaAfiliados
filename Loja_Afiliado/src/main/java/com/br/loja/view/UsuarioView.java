@@ -139,35 +139,34 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		if(usuario.getNome() == null || usuario.getNome().trim() == ""){
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo nome não pode esta vazio."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: Informe o nome não pode esta vazio.",null));
 
 			return null;
 		}
 
 		if(usuario.getUltimoNome() == null || usuario.getUltimoNome().trim() == ""){
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo Sobrenome nome não pode esta vazio."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: Informe o sobrenome nome não pode esta vazio.",null));
 
 			return null;
 		}
 
 		if(usuario.getEmail() == null || usuario.getEmail().trim() == ""){
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "O campo E-mail não pode esta vazio."));
-
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: Informe o E-mail não pode esta vazio.",null));
 			return null;
 		}
 
 		if(usuario.getSenha() == null || usuario.getSenha().trim() == ""){
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "Informe uma senha."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: Informe uma senha.",null));
 
 			return null;
 		}
 
 		if(usuario.getConfirmaSenha().trim() == null || usuario.getConfirmaSenha().trim() == ""){
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "Confirma senha não pode esta vazio."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: Informe uma cofirma senha.",null));
 
 			return null;
 		}
@@ -180,7 +179,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		if(!usuario.getSenha().equals(usuario.getConfirmaSenha())){
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso",  "As senhas  não conferem."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: As senhas  não conferem.",null));
 
 			return null;
 		}
@@ -191,33 +190,30 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 			usuario = new Usuario();
 
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Usuario cadastrado com sucesso."));
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso: Usuario cadastrado com sucesso.",null));
 
 		}else {
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro",  " Erro ao tentar cadastrar usuario.") );
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: Erro ao tentar cadastrar usuario.",null));
 		}
 		return null;
 	}
 
-	public Usuario buscaEmail() {
+	public void buscaEmail() {
 		
 		Usuario usuarioRetorno = usuarioService.emailExisteService(usuario.getEmail());
 
 		if(usuarioRetorno.getEmail() == null){
 			
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Aviso: O e-mail não foi encontrado."));
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: O e-mail não foi encontrado.",null));
 			
 			usuario = usuarioRetorno;
-			
-			return null;
 			
 		}else{
 			
 			usuario = usuarioRetorno;
 			
 		}
-		return usuario;
 	}
 
 
@@ -239,18 +235,18 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 		return Constantes.EMAILUSUARIOEXCLUSAO;
 	}
 
-	public Usuario alterarUsuario() {
+	public void alterarUsuario() {
 
+		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: O e-mail não foi encontrado.",null));
+		
 		usuarioService.alterarUsuarioService(usuario);
 
-		return null;
 	}
 
-	public Usuario exlcusaoUsuario() {
+	public void exlcusaoUsuario() {
 
 		usuarioService.exclusaoUsuarioService(usuario);
 
-		return null;
 	}
 
 }

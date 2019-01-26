@@ -132,8 +132,6 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 		
 		usuario.setSenha(PasswordEncrypter.getEncodedLegacyPassword(usuario.getSenha()));
 
-		RequestContext.getCurrentInstance().closeDialog("dlg");
-
 		return usuarioDao.cadastro(usuario);
 	}
 
