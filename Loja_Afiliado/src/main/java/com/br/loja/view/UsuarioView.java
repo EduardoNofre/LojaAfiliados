@@ -205,7 +205,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 		if(usuarioRetorno.getEmail() == null){
 			
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: O e-mail não foi encontrado.",null));
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: O e-mail não encontrado.",null));
 			
 			usuario = usuarioRetorno;
 			
@@ -237,7 +237,7 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 	public void alterarUsuario() {
 
-		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Alterado com sucesso.",null));
+		FacesContext.getCurrentInstance().addMessage("messagems1",new FacesMessage(FacesMessage.SEVERITY_INFO,"Alterado com sucesso.",null));
 		
 		usuarioService.alterarUsuarioService(usuario);
 
