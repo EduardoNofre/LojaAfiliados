@@ -51,7 +51,7 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 		// verifica se existe
 		if (usuario == null) {
 			
-			throw new LoginException(AVIS0_LOGIN_NAO_ENCONTRADO);
+			return usuario;
 		}
 
 		// verifica se esta ativo

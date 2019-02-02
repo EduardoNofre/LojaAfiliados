@@ -19,9 +19,15 @@
 
     <h:body styleClass="login-body">
     <h:form name='login' action='j_spring_security_check' method='post'>
+    						
         <div class="card login-panel ui-fluid">
-            <div class="ui-g">
-                <div class="ui-g-12">
+
+			<p:messages id="msgLogin" for="msgLogin">
+				<p:autoUpdate />
+			</p:messages>
+
+			<div class="ui-g">
+				<div class="ui-g-12">
                     <p:graphicImage name="images/logo-vader.png" library="ultima-layout" />
                 </div>
                 <div class="ui-g-12">

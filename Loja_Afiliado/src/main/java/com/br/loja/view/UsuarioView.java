@@ -49,9 +49,17 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 			usuarioAutentica = usuarioService.autenticaService(usuario);
 
-			if (!validaAdicionaUsuarioControleLogin(usuarioAutentica)) {
+			if (usuarioAutentica != null) {
 
-				RequestContext.getCurrentInstance().execute("PF('dlgUsuarioJaLogado').show();");
+				if (!validaAdicionaUsuarioControleLogin(usuarioAutentica)) {
+
+					FacesContext.getCurrentInstance().addMessage("msgLogin",new FacesMessage(FacesMessage.SEVERITY_WARN, "E-mail ou senha invalido.", null));
+
+					return "";
+				}
+			}else {
+
+				FacesContext.getCurrentInstance().addMessage("msgLogin",new FacesMessage(FacesMessage.SEVERITY_WARN, "E-mail ou senha invalido.", null));
 
 				return "";
 			}
@@ -200,19 +208,19 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 	}
 
 	public void buscaEmail() {
-		
+
 		Usuario usuarioRetorno = usuarioService.emailExisteService(usuario.getEmail());
 
 		if(usuarioRetorno.getEmail() == null){
-			
+
 			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso: O e-mail não encontrado.",null));
-			
+
 			usuario = usuarioRetorno;
-			
+
 		}else{
-			
+
 			usuario = usuarioRetorno;
-			
+
 		}
 	}
 
@@ -237,15 +245,17 @@ public class UsuarioView  extends BasicBBean implements Serializable {
 
 	public void alterarUsuario() {
 
-		FacesContext.getCurrentInstance().addMessage("messagems1",new FacesMessage(FacesMessage.SEVERITY_INFO,"Alterado com sucesso.",null));
-		
 		usuarioService.alterarUsuarioService(usuario);
+
+		FacesContext.getCurrentInstance().addMessage("messagems1",new FacesMessage(FacesMessage.SEVERITY_INFO,"Alterado com sucesso.",null));
 
 	}
 
 	public void exlcusaoUsuario() {
 
 		usuarioService.exclusaoUsuarioService(usuario);
+
+		FacesContext.getCurrentInstance().addMessage("msgExlcuido",new FacesMessage(FacesMessage.SEVERITY_INFO,"Excluido com sucesso.",null));
 
 	}
 
