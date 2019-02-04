@@ -58,7 +58,7 @@
                         
                          <p:submenu id="cad_produto" label="Produto" icon="&#xE40A;">
                             <p:menuitem id="cad_produto0" value="Cadastrar" icon="&#xE88B;" outcome="/produtoCadastro" />
-                            <p:menuitem id="cad_produto1" value="Alterar e Desativa" icon="&#xE88B;" outcome="/produtoAlterar" />
+                            <p:menuitem id="cad_produto1" value="Alterar e Desativa" icon="&#xE88B;" ajax="false" action="#{produtoView.listarProduto}" />
                             <p:menuitem id="cad_produto2" value="Exclusão" icon="&#xE88B;" outcome="/produtoExclusao" />
                         </p:submenu>
                         

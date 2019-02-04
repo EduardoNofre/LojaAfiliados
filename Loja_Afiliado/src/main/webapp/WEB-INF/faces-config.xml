@@ -55,6 +55,15 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	
+		<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>alterarDesativarProduto</from-outcome>
+			<to-view-id>/produtoAlterar.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 		<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>

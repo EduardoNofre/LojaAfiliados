@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 
 import com.br.loja.entity.Produto;
 import com.br.loja.service.ProdutoService;
+import com.br.loja.util.Constantes;
 
 /**
  * @author Eduardo
@@ -33,6 +34,8 @@ public class ProdutoView implements Serializable {
 	private ProdutoService produtoService;
 	
 	private List<Produto> produtos;
+	
+	private Produto selecionadoProduto;
 
 	public Produto produto = new Produto();
 
@@ -45,9 +48,11 @@ public class ProdutoView implements Serializable {
 		produto = new Produto();
 	}
 
-	public void listarProduto() {
+	public String listarProduto() {
 
 		produtos = produtoService.listaProdutoService();
+		
+		return Constantes.ALTERARDESATIVARPRODUTO;
 	}
 
 	public Produto getProduto() {
@@ -64,6 +69,14 @@ public class ProdutoView implements Serializable {
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+
+	public Produto getSelecionadoProduto() {
+		return selecionadoProduto;
+	}
+
+	public void setSelecionadoProduto(Produto selecionadoProduto) {
+		this.selecionadoProduto = selecionadoProduto;
 	}
 
 }

@@ -18,6 +18,8 @@ public class Constantes {
 	
 	public static final String EMAILUSUARIOALTERA = "usuarioAlterar";
 	
+	public static final String ALTERARDESATIVARPRODUTO = "alterarDesativarProduto";
+	
 	public static final String EMAILUSUARIOEXCLUSAO = "usuarioExclusao";
 	
 }

@@ -2,61 +2,140 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/templateProduto.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templateProduto.xhtml">
 
-<ui:define name="title"> Usuario Alterar </ui:define>
+	<ui:define name="title"> Usuario Alterar </ui:define>
 
-<ui:define name="content">
-<p:graphicImage name="images/dashboard/sales.svg" library="ultima-layout" style="width: 100%" />
+	<style type="text/css">
+.value {
+	font-weight: bold;
+}
 
-            <div class="card" styele="box-shadow: 5px 10px #888888;">   	       
-                <h:form>
+.ui-datatable {
+	margin-bottom: 25px
+}
+
+.ui-datatable .ui-datatable-footer {
+	text-align: left;
+}
+
+.ui-datalist ul {
+	padding: 0 0 0 10px;
+	margin: 5px 0;
+}
+
+.ui-datatable .ui-button-icon-only .ui-button-text {
+	padding: 0;
+	line-height: 1.2;
+}
+</style>
+
+	<ui:define name="content">
+		<p:graphicImage name="images/dashboard/sales.svg"
+			library="ultima-layout" style="width: 100%" />
+
+		<div class="card" styele="box-shadow: 5px 10px #888888;">
+			<h:form id="formPrincipalAlterarProduto">
 				<center>
 					<h3 style="margin-top: 0">Administração</h3>
 				</center>
-				
-				<p:dataTable var="varProduto" value="#{produtoView.produtos}">
+
+				<p:dataTable id="singleProduto" var="varProduto" value="#{produtoView.produtos}"
+					selectionMode="single"
+					selection="#{produtoView.selecionadoProduto}"
+					rowKey="#{varProduto.idProduto}" reflow="true" scrollable="true"
+					scrollHeight="500">
 
 					<p:column headerText="Nome Produto" priority="4">
-						<h:outputText value="#{varProduto}" />
+						<h:outputText value="#{varProduto.nomeProd}" />
 					</p:column>
 
-<!-- 					<p:column headerText="Descrição Produto"  priority="4"> -->
-<!-- 					<h:outputText value="#{varProduto}" /> -->
-<!-- 					</p:column> -->
+					<p:column headerText="Descrição Produto" priority="4">
+						<h:outputText value="#{varProduto.descProduto}" />
+					</p:column>
 
-<!-- 					<p:column headerText="Comentário do Produto" priority="4"> -->
-<!-- 					<h:outputText value="#{varProduto}" /> -->
-<!-- 					</p:column> -->
+					<p:column headerText="Comentário do Produto" priority="4">
+						<h:outputText value="#{varProduto.comentarioPord}" />
+					</p:column>
 
-<!-- 					<p:column headerText="Link video do produto" priority="4"> -->
-<!-- 					<h:outputText value="#{varProduto}" /> -->
-<!-- 					</p:column> -->
+					<p:column headerText="Link video do produto" priority="4">
+						<h:outputText value="#{varProduto.linkVideo}" />
+					</p:column>
 
-<!-- 					<p:column headerText="whatsapp" priority="4"> -->
-<!-- 					<h:outputText value="#{varProduto}" /> -->
-<!-- 					</p:column> -->
+					<p:column headerText="whatsapp" priority="4">
+						<h:outputText value="#{varProduto.whatsApp}" />
+					</p:column>
 
-<!-- 					<p:column headerText="E-mail" priority="4"> -->
-<!-- 					<h:outputText value="#{varProduto}" /> -->
-<!-- 					</p:column> -->
+					<p:column headerText="Email" priority="4">
+						<h:outputText value="#{varProduto.email}" />
+					</p:column>
 
-<!-- 					<p:column headerText="link de Compra" priority="4"> -->
-<!-- 					<h:outputText value="#{varProduto}" /> -->
-<!-- 					</p:column> -->
+					<p:column headerText="link de Compra" priority="4">
+						<h:outputText value="#{varProduto.comprarLink}" />
+					</p:column>
 
-<!-- 					<p:column headerText="Imagem do Produto" priority="4"> -->
-<!-- 					<h:outputText value="#{varProduto}" /> -->
-<!-- 					</p:column> -->
+					<p:column headerText="Imagem do Produto" priority="4">
+						<h:outputText value="#{varProduto.imagemProd}" />
+					</p:column>
+
+					<f:facet name="footer">
+						<center>
+							<p:commandButton value="Visualizar" 
+											 process="singleProduto" 
+											 id="ajax" style="margin-right:20px;" 
+											 styleClass="ui-priority-primary"
+											 update=":formPrincipalAlterarProduto:carDialog" 
+											 oncomplete="PF('carDialog').show()"  />
+						</center>
+					</f:facet>
+
+
+					<p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="carDetail" style="text-align:center;">
+							<p:panelGrid columns="2"
+								columnClasses="label,value">
+								<f:facet name="header">
+									<p:graphicImage
+										name="demo/images/car/#{dtSelectionView.selectedCar.brand}-big.gif" />
+								</f:facet>
+
+								<h:outputText value="Id:" />
+								<h:outputText value="#{produtoView.selecionadoProduto.nomeProd}" />
+
+								<h:outputText value="Year" />
+								<h:outputText value="#{produtoView.selecionadoProduto.descProduto}" />
+								
+								<h:outputText value="Year" />
+								<h:outputText value="#{produtoView.selecionadoProduto.comentarioPord}" />
+								
+								
+								<h:outputText value="Year" />
+								<h:outputText value="#{produtoView.selecionadoProduto.linkVideo}" />
+								
+								<h:outputText value="Year" />
+								<h:outputText value="#{produtoView.selecionadoProduto.whatsApp}" />
+								
+								<h:outputText value="Year" />
+								<h:outputText value="#{produtoView.selecionadoProduto.email}" />
+								
+								<h:outputText value="Year" />
+								<h:outputText value="#{produtoView.selecionadoProduto.comprarLink}" />
+								
+								<h:outputText value="Year" />
+								<h:outputText value="#{produtoView.selecionadoProduto.imagemProd}" />
+
+							</p:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
 
 				</p:dataTable>
-					
-				</h:form>   
-				</div>	
-				
-<div class="overview-footer">
-</div>
-</ui:define>
+			</h:form>
+		</div>
+
+		<div class="overview-footer"></div>
+	</ui:define>
 
 
 </ui:composition>
