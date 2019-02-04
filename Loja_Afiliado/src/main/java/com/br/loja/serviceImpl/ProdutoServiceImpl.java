@@ -1,7 +1,12 @@
 package com.br.loja.serviceImpl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.br.loja.dao.ProdutoDao;
+import com.br.loja.entity.Produto;
 import com.br.loja.service.ProdutoService;
 import com.br.loja.util.BasicBBean;
 
@@ -9,4 +14,20 @@ import com.br.loja.util.BasicBBean;
 public class ProdutoServiceImpl extends BasicBBean implements ProdutoService{
 
 	
+	@Autowired
+	ProdutoDao produtoDao;
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Override
+	public Produto cadastroProdutoService(Produto produto) {		
+		
+		return produtoDao.cadastroProduto(produto);
+	}
+	
+	@Override
+	public List<Produto> listaProdutoService() {
+
+		return produtoDao.listaProduto();
+	}
 }

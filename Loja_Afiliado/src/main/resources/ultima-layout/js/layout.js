@@ -1,6 +1,3 @@
-/** 
- * PrimeFaces Ultima Layout
- */
 PrimeFaces.widget.Ultima = PrimeFaces.widget.BaseWidget.extend({
     
     init: function(cfg) {

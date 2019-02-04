@@ -10,42 +10,50 @@
 <p:graphicImage name="images/dashboard/sales.svg" library="ultima-layout" style="width: 100%" />
 
             <div class="card">   	       
-<h:form>
+<h:form id="principalProduto">
 
 				<p:messages id="messagem" showDetail="true">
 					<p:autoUpdate />
 				</p:messages>
 
-				<h:panelGrid columns="4" style="margin-bottom:10px"
+				<h:panelGrid columns="2" style="margin-bottom:10px"
 						cellpadding="10">
 
 						<h:outputText value="Nome Produto:" />
-						<p:inputText id="nomep" value="#{produtoView.class}"/>
-						
+						<p:inputText id="nomep" value="#{produtoView.produto.nomeProd}"/>						
 						
 						<h:outputText value="Descrição Produto:" />
-						<p:inputText id="nomed" value="#{produtoView.usuario.nome}"/>
+						<p:inputText id="nomed" value="#{produtoView.produto.descProduto}"/>
 						
-						<h:outputText value="comentário do Produto:" />
-						<p:inputText id="produtoc" value="#{produtoView.usuario.nome}"/>
-
-						<h:outputText value="Imagem do Produto:" />
-						<p:inputText id="imagemP" value="#{produtoView.usuario.ultimoNome}" />
+						<h:outputText value="Comentário do Produto:" />
+						<p:inputText id="produtoc" value="#{produtoView.produto.comentarioPord}"/>
 						
 						<h:outputText value="Link video do produto" />
-						<p:inputText id="linkp" value="#{produtoView.usuario.ultimoNome}" />
+						<p:inputText id="linkp" value="#{produtoView.produto.linkVideo}" />
 
 						<h:outputText value="whatsapp:" />
-						<p:inputText id="what" value="#{produtoView.usuario.email}" />
+						<p:inputText id="what" value="#{produtoView.produto.whatsApp}" />
 						
 						<h:outputText value="E-mail:" />
-						<p:inputText id="mail" value="#{produtoView.usuario.email}" />
+						<p:inputText id="mail" value="#{produtoView.produto.email}" />
 						
 						<h:outputText value="link de Compra:" />
-						<p:inputText id="linkc" value="#{produtoView.usuario.email}" />								
+						<p:inputText id="linkc" value="#{produtoView.produto.comprarLink}" />	
+						
+						<h:outputText value="Imagem do Produto:" />
+						<p:fileUpload value="#{produtoView.produto.imagemProd}" mode="simple" skinSimple="true" />
+													
 				</h:panelGrid>
+						<center>
+						<p:commandButton value="Cadastrar Produto" id="ajax" 
+						    action="#{produtoView.cadastroProduto}"
+							style="margin-right:20px;" 
+							styleClass="ui-priority-primary"
+							update="messagem principalProduto"
+							ajax="true" />
+					</center>
 			</h:form> 
-				</div>	
+		</div>	
 				
 <div class="overview-footer">
 </div>
