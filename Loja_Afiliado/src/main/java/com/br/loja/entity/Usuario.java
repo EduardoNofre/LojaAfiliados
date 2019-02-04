@@ -1,18 +1,9 @@
 package com.br.loja.entity;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 /**
  * The persistent class for the usuario database table.
@@ -37,6 +28,10 @@ public class Usuario implements Serializable {
 
 	private String senha;
 
+	private Timestamp ultimoAcesso;
+
+	private String ultimoNome;
+
 	@Transient
 	private String confirmaSenha;
 
@@ -46,9 +41,9 @@ public class Usuario implements Serializable {
 	@Transient
 	private boolean existeEmail = true;
 
-	private Timestamp ultimoAcesso;
-
-	private String ultimoNome;
+	// bi-directional many-to-one association to Configservidor
+	@OneToMany(mappedBy = "usuario")
+	private List<Configservidor> configservidors;
 
 	// bi-directional many-to-one association to Configview
 	@OneToMany(mappedBy = "usuario")
@@ -133,6 +128,28 @@ public class Usuario implements Serializable {
 
 	public void setUltimoNome(String ultimoNome) {
 		this.ultimoNome = ultimoNome;
+	}
+
+	public List<Configservidor> getConfigservidors() {
+		return this.configservidors;
+	}
+
+	public void setConfigservidors(List<Configservidor> configservidors) {
+		this.configservidors = configservidors;
+	}
+
+	public Configservidor addConfigservidor(Configservidor configservidor) {
+		getConfigservidors().add(configservidor);
+		configservidor.setUsuario(this);
+
+		return configservidor;
+	}
+
+	public Configservidor removeConfigservidor(Configservidor configservidor) {
+		getConfigservidors().remove(configservidor);
+		configservidor.setUsuario(null);
+
+		return configservidor;
 	}
 
 	public List<Configview> getConfigviews() {

@@ -4,7 +4,6 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.security.auth.login.LoginException;
 
-import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

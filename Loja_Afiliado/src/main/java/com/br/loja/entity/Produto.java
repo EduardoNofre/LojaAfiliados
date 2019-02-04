@@ -34,15 +34,15 @@ public class Produto implements Serializable {
 
 	private String whatsApp;
 
-	//bi-directional many-to-one association to Tipostatus
-	@ManyToOne
-	@JoinColumn(name="idstatus")
-	private Tipostatus tipostatus;
-
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="idusuario")
 	private Usuario usuario;
+
+	//bi-directional many-to-one association to Tipostatus
+	@ManyToOne
+	@JoinColumn(name="idstatus")
+	private Tipostatus tipostatus;
 
 	public Produto() {
 	}
@@ -119,20 +119,20 @@ public class Produto implements Serializable {
 		this.whatsApp = whatsApp;
 	}
 
-	public Tipostatus getTipostatus() {
-		return this.tipostatus;
-	}
-
-	public void setTipostatus(Tipostatus tipostatus) {
-		this.tipostatus = tipostatus;
-	}
-
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Tipostatus getTipostatus() {
+		return this.tipostatus;
+	}
+
+	public void setTipostatus(Tipostatus tipostatus) {
+		this.tipostatus = tipostatus;
 	}
 
 }
