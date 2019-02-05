@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.CellEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -55,6 +56,16 @@ public class ProdutoView implements Serializable {
 		return Constantes.ALTERARDESATIVARPRODUTO;
 	}
 
+	 public void onCellEdit(CellEditEvent event) {
+	        Object oldValue = event.getOldValue();
+	        Object newValue = event.getNewValue();
+	         
+	        if(newValue != null && !newValue.equals(oldValue)) {
+	            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+	            FacesContext.getCurrentInstance().addMessage(null, msg);
+	        }
+	    }
+	 
 	public Produto getProduto() {
 		return produto;
 	}
