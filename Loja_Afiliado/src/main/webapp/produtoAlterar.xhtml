@@ -45,7 +45,7 @@
 					selectionMode="single"
 					selection="#{produtoView.selecionadoProduto}"
 					rowKey="#{varProduto.idProduto}" reflow="true" scrollable="true"
-					scrollHeight="500">
+					scrollHeight="290">
 
 					<p:column headerText="Nome Produto" priority="4">
 						<h:outputText value="#{varProduto.nomeProd}" />
@@ -81,20 +81,20 @@
 
 					<f:facet name="footer">
 						<center>
-							<p:commandButton value="Visualizar" 
-											 process="singleProduto" 
-											 id="ajax" style="margin-right:20px;" 
-											 styleClass="ui-priority-primary"
-											 update=":formPrincipalAlterarProduto:carDialog" 
-											 oncomplete="PF('carDialog').show()"  />
+							<f:facet name="footer">
+								<p:commandButton process="singleProduto" update=":formPrincipalAlterarProduto:produtoDetail"
+									icon="pi pi-search" value="View"
+									oncomplete="PF('produtoDialog').show()" />
+							</f:facet>
 						</center>
 					</f:facet>
+				</p:dataTable>
 
-
-					<p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-						<p:outputPanel id="carDetail" style="text-align:center;">
+					<p:dialog header="Car Info" widgetVar="produtoDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="produtoDetail" style="text-align:center;">
 							<p:panelGrid columns="2"
-								columnClasses="label,value">
+							 			rendered="#{not empty produtoView.selecionadoProduto}"
+										columnClasses="label,value">
 								<f:facet name="header">
 									<p:graphicImage
 										name="demo/images/car/#{dtSelectionView.selectedCar.brand}-big.gif" />
@@ -129,8 +129,6 @@
 						</p:outputPanel>
 					</p:dialog>
 
-
-				</p:dataTable>
 			</h:form>
 		</div>
 
