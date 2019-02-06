@@ -33,9 +33,9 @@ public class ProdutoView implements Serializable {
 
 	@Autowired
 	private ProdutoService produtoService;
-	
+
 	private List<Produto> produtos;
-	
+
 	private Produto selecionadoProduto;
 
 	public Produto produto = new Produto();
@@ -52,20 +52,27 @@ public class ProdutoView implements Serializable {
 	public String listarProduto() {
 
 		produtos = produtoService.listaProdutoService();
-		
+
 		return Constantes.ALTERARDESATIVARPRODUTO;
 	}
 
-	 public void onCellEdit(CellEditEvent event) {
-	        Object oldValue = event.getOldValue();
-	        Object newValue = event.getNewValue();
-	         
-	        if(newValue != null && !newValue.equals(oldValue)) {
-	            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-	            FacesContext.getCurrentInstance().addMessage(null, msg);
-	        }
-	    }
-	 
+
+	public void salvarCelulaAlterada() {
+
+		produtoService.salvarCelulaAlteradaService(selecionadoProduto);
+	}
+
+
+	public void onCellEdit(CellEditEvent event) {
+		Object oldValue = event.getOldValue();
+		Object newValue = event.getNewValue();
+
+		if(newValue != null && !newValue.equals(oldValue)) {
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
+	}
+
 	public Produto getProduto() {
 		return produto;
 	}

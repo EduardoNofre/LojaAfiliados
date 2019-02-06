@@ -26,4 +26,10 @@ public class ProdutoDaoImpl implements ProdutoDao {
 		
 		return produtoRepository.findAll();
 	}
+
+	@Override
+	public void salvarCelulaAlterada(Produto produto) {
+
+		produtoRepository.save(produto);
+	}
 }

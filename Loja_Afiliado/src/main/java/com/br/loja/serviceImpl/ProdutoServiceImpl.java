@@ -30,4 +30,13 @@ public class ProdutoServiceImpl extends BasicBBean implements ProdutoService{
 
 		return produtoDao.listaProduto();
 	}
+
+	@Override
+	public void salvarCelulaAlteradaService(Produto produto) {
+		
+		produtoDao.salvarCelulaAlterada(produto);
+		
+	}
+	
+	
 }

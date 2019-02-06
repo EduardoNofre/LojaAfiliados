@@ -93,7 +93,7 @@
 					</f:facet>
 				</p:dataTable>
 
-				<p:dialog header="Produto Selecionado " widgetVar="produtoDialog" modal="true" resizable="false" width="70%">
+				<p:dialog id="dialogCelula" header="Produto Selecionado " widgetVar="produtoDialog" modal="true" resizable="false" width="70%">
 
 					<p:dataTable id="produtoDetail" 
 						var="varProduto"
@@ -110,15 +110,8 @@
 
 						<p:column headerText="Nome Produto" priority="4">
 							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText
-										value="#{produtoView.selecionadoProduto.nomeProd}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="nmProduto"
-										value="#{produtoView.selecionadoProduto.nomeProd}"
-										style="width:96%" />
-								</f:facet>
+								<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.nomeProd}" /></f:facet>
+								<f:facet name="input"><p:inputText id="nmProduto" value="#{produtoView.selecionadoProduto.nomeProd}" style="width:96%" /></f:facet>
 							</p:cellEditor>
 						</p:column>
 
@@ -151,25 +144,37 @@
 						</p:column>
 
 						<p:column headerText="Email" priority="5">
-							<h:outputText value="#{produtoView.selecionadoProduto.email}" />
+						<p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.email}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtoEmail" value="#{produtoView.selecionadoProduto.email}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>               			 
 						</p:column>
 
-						<p:column headerText="link de Compra" priority="6">
-							<h:outputText
-								value="#{produtoView.selecionadoProduto.comprarLink}" />
+						<p:column headerText="link de Compra" priority="6">		
+						<p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.comprarLink}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtolinkCompra" value="#{produtoView.selecionadoProduto.comprarLink}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>								
+						</p:column>
+						
+						<p:column headerText="Imagem do Produto" priority="7">
+						<p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.imagemProd}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtoImagem" value="#{produtoView.selecionadoProduto.imagemProd}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>               			 
 						</p:column>
 						
 						<f:facet name="footer">
 						<center>
 							<f:facet name="footer">
-								<p:commandButton id="SalvarAlteracao" value =" Salvar Alteração "/>
+								<p:commandButton  id="SalvarAlteracao" 
+												  action="#{produtoView.salvarCelulaAlterada}"
+												  value =" Salvar Alteração "
+												  ajax="false"
+												  />
 							</f:facet>
 						</center>
 					</f:facet>
-
-						<p:column headerText="Imagem do Produto" priority="7">
-							<h:outputText value="#{produtoView.selecionadoProduto.imagemProd}" />
-						</p:column>
 					</p:dataTable>
 				</p:dialog>
 			</h:form>

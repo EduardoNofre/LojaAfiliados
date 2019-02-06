@@ -9,4 +9,6 @@ public interface ProdutoDao {
 	public Produto cadastroProduto(Produto produto);
 
 	public List<Produto> listaProduto();
+	
+	public void salvarCelulaAlterada(Produto produto);
 }

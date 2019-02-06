@@ -16,5 +16,7 @@ public interface ProdutoService {
 	public Produto cadastroProdutoService(Produto produto);
 	
 	public List<Produto> listaProdutoService();
+	
+	public void salvarCelulaAlteradaService(Produto produto);
 
 }
