@@ -4,21 +4,21 @@ import com.br.loja.entity.Usuario;
 
 public interface UsuarioDao {
 
-	public Usuario logar(Usuario usuario);
+	public Usuario logarDao(Usuario usuario);
 
-	Usuario buscarPorLogin(String login);
+	Usuario buscarPorLoginDao(String login);
 
-	public Usuario buscarPorLoginESenha(String login, String senha);
+	public Usuario buscarPorLoginESenhaDao(String login, String senha);
 
-	public Usuario inicializarPerfisDoUsuario(Usuario usuario);
+	public Usuario inicializarPerfisDoUsuarioDao(Usuario usuario);
 
-	public Usuario buscaUsuarioId(int idUsuario);
+	public Usuario buscaUsuarioIdDao(int idUsuario);
 
-	public Usuario emailExiste(String email);
+	public Usuario emailExisteDao(String email);
 
-	public Usuario cadastro(Usuario usuario);
+	public Usuario cadastroDao(Usuario usuario);
 
-	public Usuario alterarUsuario(Usuario usuario);
+	public Usuario alterarUsuarioDao(Usuario usuario);
 
-	public Usuario exclusaoUsuario(Usuario usuario);
+	public Usuario exclusaoUsuarioDao(Usuario usuario);
 }

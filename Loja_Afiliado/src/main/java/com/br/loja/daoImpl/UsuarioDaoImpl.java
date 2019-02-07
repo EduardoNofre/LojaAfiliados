@@ -18,14 +18,14 @@ public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Override
 	@Transactional
-	public Usuario logar(Usuario usuario) {	
+	public Usuario logarDao(Usuario usuario) {	
 
 		return usuarioRepository.findByEmail(usuario.getEmail());
 	}
 
 	@Override
 	@Transactional
-	public Usuario buscarPorLogin(String email){
+	public Usuario buscarPorLoginDao(String email){
 
 		return usuarioRepository.findByEmail(email);
 
@@ -33,14 +33,14 @@ public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Override
 	@Transactional
-	public Usuario buscarPorLoginESenha(String email, String senha) {
+	public Usuario buscarPorLoginESenhaDao(String email, String senha) {
 
 		return usuarioRepository.loginUsuario(email,senha);
 	}
 
 	@Override
 	@Transactional
-	public Usuario inicializarPerfisDoUsuario(Usuario usuario) {
+	public Usuario inicializarPerfisDoUsuarioDao(Usuario usuario) {
 
 		//	usuarioRepository.initialize(usuario);
 
@@ -49,26 +49,26 @@ public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Override
 	@Transactional
-	public Usuario buscaUsuarioId(int idUsuario) {
+	public Usuario buscaUsuarioIdDao(int idUsuario) {
 
 		return usuarioRepository.findOne(idUsuario);
 	}
 
 	@Override
 	@Transactional
-	public Usuario emailExiste(String email) {
+	public Usuario emailExisteDao(String email) {
 
 		return usuarioRepository.findByEmail(email);
 	}
 
 	@Override
-	public Usuario cadastro(Usuario usuario) {
+	public Usuario cadastroDao(Usuario usuario) {
 
 		return usuarioRepository.saveAndFlush(usuario);
 	}
 
 	@Override
-	public Usuario alterarUsuario(Usuario usuario) {
+	public Usuario alterarUsuarioDao(Usuario usuario) {
 
 		// passar o id para update
 		return usuarioRepository.saveAndFlush(usuario);
@@ -76,7 +76,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
-	public Usuario exclusaoUsuario(Usuario usuario) {
+	public Usuario exclusaoUsuarioDao(Usuario usuario) {
 
 		//Exclusão logica
 		Tipostatus tp = new Tipostatus();

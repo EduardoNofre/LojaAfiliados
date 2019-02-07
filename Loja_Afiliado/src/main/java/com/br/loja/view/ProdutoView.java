@@ -62,6 +62,10 @@ public class ProdutoView implements Serializable {
 		produtoService.salvarCelulaAlteradaService(selecionadoProduto);
 	}
 
+	public void excluirCelulaAlterada() {
+
+		produtoService.excluirCelulaService(selecionadoProduto);
+	}
 
 	public void onCellEdit(CellEditEvent event) {
 		Object oldValue = event.getOldValue();
@@ -72,6 +76,10 @@ public class ProdutoView implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		}
 	}
+
+
+
+
 
 	public Produto getProduto() {
 		return produto;

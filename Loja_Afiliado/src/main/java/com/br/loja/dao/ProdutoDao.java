@@ -6,9 +6,12 @@ import com.br.loja.entity.Produto;
 
 public interface ProdutoDao {
 
-	public Produto cadastroProduto(Produto produto);
+	public Produto cadastroProdutoDao(Produto produto);
 
-	public List<Produto> listaProduto();
-	
-	public void salvarCelulaAlterada(Produto produto);
+	public List<Produto> listaProdutoDao();
+
+	public void salvarCelulaAlteradaDao(Produto produto);
+
+	public void excluirCelulaADao(Produto produto);
+
 }

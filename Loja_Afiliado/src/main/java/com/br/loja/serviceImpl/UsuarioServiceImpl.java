@@ -78,7 +78,7 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 
 	@Override
 	public Usuario inicializarPerfisDoUsuarioService(Usuario usuario) {
-		return usuario = usuarioDao.buscaUsuarioId(usuario.getIdUsuario());
+		return usuario = usuarioDao.buscaUsuarioIdDao(usuario.getIdUsuario());
 	}
 
 	private boolean validaUsuarioESenha(Usuario usuario) {
@@ -87,18 +87,18 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 
 	@Override
 	public Usuario buscarPorLoginESenhaService(String login, String senha) throws Exception {
-		return usuarioDao.buscarPorLoginESenha(login, senha);
+		return usuarioDao.buscarPorLoginESenhaDao(login, senha);
 	}
 
 	@Override
 	public Usuario buscarPorLoginService(String login) throws Exception {
-		return usuarioDao.buscarPorLogin(login);
+		return usuarioDao.buscarPorLoginDao(login);
 	}
 
 	@Override
 	public Usuario emailExisteService(String email) {
 		
-		Usuario usuario = usuarioDao.buscarPorLogin(email);
+		Usuario usuario = usuarioDao.buscarPorLoginDao(email);
 
 		if (usuario != null) {
 
@@ -131,20 +131,20 @@ public class UsuarioServiceImpl extends BasicBBean implements UsuarioService {
 		
 		usuario.setSenha(PasswordEncrypter.getEncodedLegacyPassword(usuario.getSenha()));
 
-		return usuarioDao.cadastro(usuario);
+		return usuarioDao.cadastroDao(usuario);
 	}
 
 	@Override
 	public Usuario alterarUsuarioService(Usuario usuario) {
 
-		return usuarioDao.alterarUsuario(usuario);
+		return usuarioDao.alterarUsuarioDao(usuario);
 
 	}
 
 	@Override
 	public Usuario exclusaoUsuarioService(Usuario usuario) {
 
-		return usuarioDao.exclusaoUsuario(usuario);
+		return usuarioDao.exclusaoUsuarioDao(usuario);
 
 	}
 

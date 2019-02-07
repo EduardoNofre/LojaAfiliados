@@ -16,20 +16,27 @@ public class ProdutoDaoImpl implements ProdutoDao {
 	ProdutoRepository produtoRepository;
 
 	@Override
-	public Produto cadastroProduto(Produto produto) {
+	public Produto cadastroProdutoDao(Produto produto) {
 
 		return produtoRepository.save(produto);
 	}
 
 	@Override
-	public List<Produto> listaProduto() {
+	public List<Produto> listaProdutoDao() {
 		
 		return produtoRepository.findAll();
 	}
 
+	
 	@Override
-	public void salvarCelulaAlterada(Produto produto) {
+	public void salvarCelulaAlteradaDao(Produto produto) {
 
 		produtoRepository.save(produto);
+	}
+	
+	@Override
+	public void excluirCelulaADao(Produto produto) {
+
+		produtoRepository.delete(produto);
 	}
 }

@@ -10,18 +10,56 @@
 <p:graphicImage name="images/dashboard/sales.svg" library="ultima-layout" style="width: 100%" />
 
             <div class="card">   	       
-                <h:form>
-                <p:growl id="growl" showDetail="true" sticky="true" /> 
-                		
+                <h:form id="formPrincipalAlterarProduto">
                 
-			  		<p>A div element with a shadow. The first value is the horizontal offset and the second value is the vertical offset. The shadow color will be inherited from the text color.</p>			                    	
-					<p>A div element with a shadow. The first value is the horizontal offset and the second value is the vertical offset. The shadow color will be inherited from the text color.</p>			                    	
-					<p>A div element with a shadow. The first value is the horizontal offset and the second value is the vertical offset. The shadow color will be inherited from the text color.</p>	
-				
-					<p:commandButton value="Excluir" id="ajax" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />	
-						                    	
-					
-				</h:form>   
+				<p:dataTable id="singleProduto" var="varProduto"
+					value="#{produtoView.produtos}" 
+					selectionMode="single"
+					selection="#{produtoView.selecionadoProduto}"
+					rowKey="#{varProduto.idProduto}" 
+					reflow="true" 
+					scrollable="true"
+					scrollHeight="290">
+
+					<p:column headerText="Nome Produto" priority="4">
+						<h:outputText value="#{varProduto.nomeProd}" />
+					</p:column>
+
+					<p:column headerText="Descrição Produto" priority="4">
+						<h:outputText value="#{varProduto.descProduto}" />
+					</p:column>
+
+					<p:column headerText="Comentário do Produto" priority="4">
+						<h:outputText value="#{varProduto.comentarioPord}" />
+					</p:column>
+
+					<p:column headerText="Link video do produto" priority="4">
+						<h:outputText value="#{varProduto.linkVideo}" />
+					</p:column>
+
+					<p:column headerText="whatsapp" priority="4">
+						<h:outputText value="#{varProduto.whatsApp}" />
+					</p:column>
+
+					<p:column headerText="Email" priority="4">
+						<h:outputText value="#{varProduto.email}" />
+					</p:column>
+
+					<p:column headerText="link de Compra" priority="4">
+						<h:outputText value="#{varProduto.comprarLink}" />
+					</p:column>
+
+					<p:column headerText="Imagem do Produto" priority="4">
+						<h:outputText value="#{varProduto.imagemProd}" />
+					</p:column>
+
+				</p:dataTable>
+
+				<p:contextMenu for="singleProduto">
+					<p:menuitem value="Exlcuir" update="singleProduto" icon="pi pi-times" action="#{produtoView.excluirCelulaAlterada}" />
+				</p:contextMenu>
+
+			</h:form>   
 			</div>	
 				
 <div class="overview-footer">
