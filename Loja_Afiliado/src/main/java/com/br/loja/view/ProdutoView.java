@@ -53,7 +53,7 @@ public class ProdutoView implements Serializable {
 
 		produtos = produtoService.listaProdutoService();
 
-		return Constantes.ALTERARDESATIVARPRODUTO;
+		return Constantes.EXCLUIRALTERARDESATIVAATIVA;
 	}
 
 
@@ -76,11 +76,6 @@ public class ProdutoView implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		}
 	}
-
-
-
-
-
 	public Produto getProduto() {
 		return produto;
 	}

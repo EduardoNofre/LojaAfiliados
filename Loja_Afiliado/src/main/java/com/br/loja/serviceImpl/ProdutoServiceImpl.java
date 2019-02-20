@@ -43,5 +43,4 @@ public class ProdutoServiceImpl extends BasicBBean implements ProdutoService {
 		produtoDao.excluirCelulaADao(produto);
 
 	}
-
 }

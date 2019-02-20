@@ -11,6 +11,9 @@
 
             <div class="card">   	       
                 <h:form id="formPrincipalAlterarProduto">
+                <center>
+					<h3 style="margin-top: 0">Administração de produto </h3>
+				</center>
                 
 				<p:dataTable id="singleProduto" var="varProduto"
 					value="#{produtoView.produtos}" 
@@ -54,10 +57,145 @@
 					</p:column>
 
 				</p:dataTable>
-
-				<p:contextMenu for="singleProduto">
-					<p:menuitem value="Exlcuir" update="singleProduto" icon="pi pi-times" action="#{produtoView.excluirCelulaAlterada}" />
+				
+				
+								<!-- Inicio Menu -->
+							
+				<p:contextMenu for="singleProduto" style="margin-top: 0">
+					<p:menuitem value=" Alterar Produto " 
+								update=":formPrincipalAlterarProduto:singleProduto" 
+								icon="pi pi-times" 
+								oncomplete="PF('dialogProdutoAlterar').show()"
+								/>
+								
+					<p:menuitem value=" Excluir Produto " 
+								update=":formPrincipalAlterarProduto:singleProduto" 
+								icon="pi pi-times" 
+								action="#{produtoView.excluirCelulaAlterada}" 
+								oncomplete="PF('dialogProdutoExcluir').show()"
+								/>
+								
+								
+					<p:menuitem value=" Desativar Produto " 
+								update=":formPrincipalAlterarProduto:singleProduto" 
+								icon="pi pi-times" 
+								action="#{produtoView.excluirCelulaAlterada}" 
+								oncomplete="PF('dialogProdutoAlterar').show()"
+								/>	
+								
+													<p:menuitem value=" Exlcuir ProdutoConfirm " icon="pi pi-times" >
+					    <p:commandLink>
+        					<p:confirm header="Confirmation" message="Are you sure?" icon="pi pi-exclamation-triangle" update="message"/>
+    				  </p:commandLink>
+					
+					</p:menuitem>
+							
 				</p:contextMenu>
+								<!-- fim  Menu -->
+
+								<!-- inicio  dialog alterar -->
+								
+				<p:dialog id="dialogAlterar" 
+						  header="Produto Selecionado " 
+						  widgetVar="dialogProdutoAlterar" 
+						  modal="true" 
+						  resizable="false" 
+						  width="70%">
+
+					<p:dataTable id="produtoAlterar"
+						var="varProduto"
+						value="#{produtoView.selecionadoProduto}" 
+						editable="true" 
+						editMode="cell"
+						scrollHeight="290">
+						
+						<f:facet name="header">
+           					 Click na linha para editar 
+        				</f:facet>
+
+						<p:ajax event="cellEdit" listener="#{produtoView.onCellEdit}" />
+
+						<p:column headerText="Nome Produto" priority="4">
+							<p:cellEditor>
+								<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.nomeProd}" /></f:facet>
+								<f:facet name="input"><p:inputText id="nmProduto" value="#{produtoView.selecionadoProduto.nomeProd}" style="width:96%" /></f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Descrição Produto" priority="1">
+						 <p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.descProduto}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="desProduto" value="#{produtoView.selecionadoProduto.descProduto}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>               
+						</p:column>
+
+						<p:column headerText="Comentário do Produto" priority="2">
+						 <p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.comentarioPord}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtoC" value="#{produtoView.selecionadoProduto.comentarioPord}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>   
+						</p:column>
+
+						<p:column headerText="Link video do produto" priority="3">
+						<p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.linkVideo}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtolink" value="#{produtoView.selecionadoProduto.linkVideo}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>               			 
+						</p:column>
+
+						<p:column headerText="whatsapp" priority="4">
+						  <p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.whatsApp}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtoWapp" value="#{produtoView.selecionadoProduto.whatsApp}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>    
+						</p:column>
+
+						<p:column headerText="Email" priority="5">
+						<p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.email}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtoEmail" value="#{produtoView.selecionadoProduto.email}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>               			 
+						</p:column>
+
+						<p:column headerText="link de Compra" priority="6">		
+						<p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.comprarLink}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtolinkCompra" value="#{produtoView.selecionadoProduto.comprarLink}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>								
+						</p:column>
+						
+						<p:column headerText="Imagem do Produto" priority="7">
+						<p:cellEditor>
+                   			<f:facet name="output"><h:outputText value="#{produtoView.selecionadoProduto.imagemProd}" /></f:facet>
+                   		    <f:facet name="input"><p:inputText id="produtoImagem" value="#{produtoView.selecionadoProduto.imagemProd}" style="width:96%"/></f:facet>
+               			 </p:cellEditor>               			 
+						</p:column>
+						
+						<f:facet name="footer">
+						<center>
+							<f:facet name="footer">
+								<p:commandButton  id="alterar" 
+												  action="#{produtoView.salvarCelulaAlterada}"
+												  value =" Salvar Alteração "
+												  ajax="false"/>
+							</f:facet>
+						</center>
+					</f:facet>
+					</p:dataTable>
+				</p:dialog>
+
+								<!-- Fim  dialog alterar -->
+								
+								<!-- Inicio  dialog Exlcuir -->
+								
+				    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+    </p:confirmDialog> 
+
+								<!-- Fim  dialog Excluir -->
+
+
 
 			</h:form>   
 			</div>	

@@ -22,4 +22,5 @@ public class Constantes {
 	
 	public static final String EMAILUSUARIOEXCLUSAO = "usuarioExclusao";
 	
+	public static final String EXCLUIRALTERARDESATIVAATIVA = "produtoExclusao";
 }
